@@ -114,7 +114,7 @@
                             allowedTypes: 'image',
                             value: attributes.mediaID,
                             render: function( obj ) {
-                                return el( components.Button, {
+                                return el( components.Flex, {
                                         className: attributes.mediaID ? 'image-button' : 'button button-large',
                                         onClick: obj.open
                                     },
