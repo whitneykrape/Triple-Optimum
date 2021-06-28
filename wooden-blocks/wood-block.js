@@ -141,7 +141,7 @@
                             props.setAttributes( { link: value } );
                         },
                         className: 'article-link',
-                    } ),
+                    } )
                 )
             ];
         },
@@ -162,27 +162,27 @@
                                 className: 'image-marker image-marker-date',
                                 value: attributes.date
                             } ),
-                            el( 'img', { src: attributes.mediaURL } ),
+                            el( 'img', { src: attributes.mediaURL } )
                         ),
-                    el( RichText.Content, {
-                        tagName: 'h3',
-                        className: 'article-title',
-                        value: attributes.title
-                    } ),
-                    el( RichText.Content, {
-                        tagName: 'p', 
-                        className: 'article-description', 
-                        value: attributes.description
-                    } ),
-                    el( 'p', { 
-                        className: 'article-read-more' 
-                        },
                         el( RichText.Content, {
-                        tagName: 'span', 
-                        className: 'btn-sm article-link', 
-                        value: attributes.link
+                            tagName: 'h3',
+                            className: 'article-title',
+                            value: attributes.title
                         } ),
-                    ),
+                        el( RichText.Content, {
+                            tagName: 'p', 
+                            className: 'article-description', 
+                            value: attributes.description
+                        } ),
+                        el( 'p', { 
+                            className: 'article-read-more' 
+                            },
+                            el( RichText.Content, {
+                            tagName: 'span', 
+                            className: 'btn-sm article-link', 
+                            value: attributes.link
+                            } )
+                        )
                 )
             );
         },
@@ -194,5 +194,5 @@
     window.wp.i18n,
     window.wp.element,
     window.wp.components,
-    window._,
+    window._
 );

@@ -9,7 +9,7 @@
 function loadArticleBlock() {
   wp_enqueue_script(
     'article-block',
-    plugin_dir_url(__FILE__) . 'article-block.js',
+    plugin_dir_url(__FILE__) . 'wood-block.js',
     array('wp-blocks','wp-editor'),
     true
   );
