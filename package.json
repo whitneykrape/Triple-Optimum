@@ -1,0 +1,19 @@
+{
+  "name": "tripleoptimum",
+  "version": "0.0.5",
+  "description": "WordPress Blocks by Triple Optimum",
+  "main": "index.js",
+  "repository": "git@github.com:whitneykrape/Triple-Optimum.git",
+  "author": "Whitney Krape <whitney@formfunction.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "@wordpress/blocks": "^9.1.4"
+  },
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "dependencies": {
+    "@wordpress/scripts": "^16.1.3"
+  }
+}
