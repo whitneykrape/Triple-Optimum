@@ -12,4 +12,4 @@
 
 defined( 'ABSPATH' ) || exit;
 
-include 'wooden-blocks/wooden-blocks.php';
+include 'block-article/index.php';

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Article Block
+ * Plugin Name: Gutenberg Examples Basic EsNext
  * Plugin URI: 
  * Description: 
  * Version: 0.0.1
@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 add_action( 'init', 'block_template_load_textdomain' );
 
 function block_template_load_textdomain() {
-	load_plugin_textdomain( 'block-article', false, basename( __DIR__ ) . '/languages' );
+	load_plugin_textdomain( 'block_template', false, basename( __DIR__ ) . '/languages' );
 }
 
 /**
@@ -33,13 +33,13 @@ function block_template_register_block() {
 	$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
 
 	wp_register_script(
-		'block-article',
+		'block_template',
 		plugins_url( 'build/index.js', __FILE__ ),
 		$asset_file['dependencies'],
 		$asset_file['version']
 	);
 
-	register_block_type( 'block-article/block_template_esnext', array(
+	register_block_type( 'block_template/block_template_esnext', array(
 		'editor_script' => 'block_template_esnext',
 	) );
 
@@ -49,7 +49,7 @@ function block_template_register_block() {
      * plugin_dir_path( MY_PLUGIN ) . 'languages' ) ). For details see
      * https://make.wordpress.org/core/2018/11/09/new-javascript-i18n-support-in-wordpress/
      */
-    wp_set_script_translations( 'block_template_esnext', 'block-article' );
+    wp_set_script_translations( 'block_template_esnext', 'block_template' );
   }
 
 }

@@ -1,15 +1,16 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
-import {
-	el,
-	RichText,
-	MediaUpload,
-	InspectorControls,
-} from '@wordpress/editor';
-import { TextControl } from '@wordpress/components';
 
-registerBlockType( 'block-article/article-block', {
-	title: __( 'Triple Optimum: Article', 'block-article' ),
+const { el } = wp.element.createElement;
+const { RichText } = wp.editor.RichText;
+const { MediaUpload } = wp.editor.MediaUpload;
+const { AlignmentToolbar } = wp.editor.AlignmentToolbar;
+const { BlockControls } = wp.editor.BlockControls;
+const { InspectorControls } = wp.editor.InspectorControls;
+const { TextControl } = wp.components.TextControl;
+
+registerBlockType( 'wooden-blocks/article-block-es6', {
+	title: __( 'Wooden Blocks: Article ES6', 'wooden-blocks' ),
 	icon: 'index-card',
 	category: 'layout',
 	attributes: {
@@ -49,26 +50,26 @@ registerBlockType( 'block-article/article-block', {
 
 	example: {
 		attributes: {
-			title: __( 'Article Title', 'block-article' ),
-			date: __( 'Article Date', 'block-article' ),
+			title: __( 'Article Title', 'wooden-blocks' ),
+			date: __( 'Article Date', 'wooden-blocks' ),
 			mediaURL: '',
-			description: __( 'Article Description', 'block-article' ),
-			link: __( 'Article Link', 'block-article' ),
-			imagelink: __( 'Article Image Link', 'block-article' ),
+			description: __( 'Article Description', 'wooden-blocks' ),
+			link: __( 'Article Link', 'wooden-blocks' ),
+			imagelink: __( 'Article Image Link', 'wooden-blocks' ),
 		},
 	},
 
 	edit: ( props ) => {
-		let attributes = props.attributes;
+		var attributes = props.attributes;
 
-		let onSelectImage = ( media ) => {
+		var onSelectImage = ( media ) => {
 			return props.setAttributes( {
 				mediaURL: media.url,
 				mediaID: media.id,
 			} );
 		};
 
-		let onChangeTextField = ( newValue ) => {
+		var onChangeTextField = ( newValue ) => {
 			props.setAttributes( { imagelink: newValue } );
 		};
 
@@ -89,7 +90,7 @@ registerBlockType( 'block-article/article-block', {
 				el( RichText, {
 					tagName: 'h3',
 					inline: true,
-					placeholder: i18n.__( 'Article Title', 'block-article' ),
+					placeholder: i18n.__( 'Article Title', 'wooden-blocks' ),
 					value: attributes.title,
 					onChange: ( value ) => {
 						props.setAttributes( { title: value } );
@@ -99,7 +100,7 @@ registerBlockType( 'block-article/article-block', {
 				el( RichText, {
 					tagName: 'span',
 					inline: false,
-					placeholder: i18n.__( 'Article Date', 'block-article' ),
+					placeholder: i18n.__( 'Article Date', 'wooden-blocks' ),
 					value: attributes.date,
 					onChange: ( value ) => {
 						props.setAttributes( { date: value } );
@@ -123,7 +124,7 @@ registerBlockType( 'block-article/article-block', {
 									onClick: obj.open,
 								},
 								! attributes.mediaID
-									? __( 'Upload Image', 'block-article' )
+									? __( 'Upload Image', 'wooden-blocks' )
 									: el( 'img', { src: attributes.mediaURL } )
 							);
 						},
@@ -133,7 +134,7 @@ registerBlockType( 'block-article/article-block', {
 					tagName: 'p',
 					placeholder: i18n.__(
 						'Article Description',
-						'block-article'
+						'wooden-blocks'
 					),
 					value: attributes.description,
 					onChange: ( value ) => {
@@ -144,7 +145,7 @@ registerBlockType( 'block-article/article-block', {
 				el( RichText, {
 					tagName: 'span',
 					inline: false,
-					placeholder: i18n.__( 'Article Link', 'block-article' ),
+					placeholder: i18n.__( 'Article Link', 'wooden-blocks' ),
 					value: attributes.link,
 					onChange: ( value ) => {
 						props.setAttributes( { link: value } );
@@ -155,7 +156,7 @@ registerBlockType( 'block-article/article-block', {
 		];
 	},
 	save: ( props ) => {
-		let attributes = props.attributes;
+		var attributes = props.attributes;
 
 		return el(
 			'article',
