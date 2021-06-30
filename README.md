@@ -7,5 +7,4 @@ A collection of blocks, starting from 1 that needs recoding, that will be:
 Initial blocks:
 1. Refactored inital block will move from card style to a Wood Block mimic.
 2. Second block will be a "signature" style block overlaying on an image or background.
-
-
+3. As looking at adding better UI to blocks overall and an improved Image block.
