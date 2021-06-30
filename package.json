@@ -6,14 +6,16 @@
   "repository": "git@github.com:whitneykrape/Triple-Optimum.git",
   "author": "Whitney Krape <whitney@formfunction.io>",
   "license": "MIT",
+  "dependencies": {
+  },
   "devDependencies": {
-    "@wordpress/blocks": "^9.1.4"
+    "@wordpress/blocks": "^9.1.4",
+    "@wordpress/scripts": "^16.1.3",
+    "@wordpress/components": "^14.1.5",
+    "lerna": "^4.0.0"
   },
   "scripts": {
     "start": "wp-scripts start",
     "build": "wp-scripts build"
-  },
-  "dependencies": {
-    "@wordpress/scripts": "^16.1.3"
   }
 }

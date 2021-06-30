@@ -1,0 +1,28 @@
+{
+	"name": "block-template",
+	"version": "0.0.1",
+	"private": true,
+	"description": "Overall Template for Starting a new Sub-Block",
+	"author": "Form Function IO",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"block"
+	],
+	"homepage": "",
+	"repository": "",
+	"bugs": {
+		"url": ""
+	},
+	"main": "build/index.js",
+	"devDependencies": {
+		"@wordpress/scripts": "^9.0.0"
+	},
+	"scripts": {
+		"build": "wp-scripts build",
+		"format:js": "wp-scripts format-js",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start"
+	}
+}
