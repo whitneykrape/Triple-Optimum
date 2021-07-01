@@ -1,12 +1,11 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import {
-	el,
 	RichText,
 	MediaUpload,
 	InspectorControls,
-} from '@wordpress/editor';
-import { TextControl } from '@wordpress/components';
+} from '@wordpress/blockEditor';
+import { TextControl, Flex } from '@wordpress/components';
 
 registerBlockType( 'block-article/article-block', {
 	title: __( 'Triple Optimum: Article', 'block-article' ),
@@ -59,7 +58,19 @@ registerBlockType( 'block-article/article-block', {
 	},
 
 	edit: ( props ) => {
-		const attributes = props.attributes;
+		const {
+			className,
+			attributes: {
+				title,
+				date,
+				mediaID,
+				mediaURL,
+				description,
+				link,
+				imagelink,
+			},
+			setAttributes,
+		} = props;
 
 		const onSelectImage = ( media ) => {
 			return props.setAttributes( {
@@ -69,15 +80,23 @@ registerBlockType( 'block-article/article-block', {
 		};
 
 		const onChangeTitle = ( newTitle ) => {
-			props.setAttributes( { content: newTitle } );
+			setAttributes( { content: newTitle } );
 		};
 
 		const onChangeDate = ( newDate ) => {
-			props.setAttributes( { content: newDate } );
+			setAttributes( { content: newDate } );
+		};
+
+		const onChangeDescription = ( newDescription ) => {
+			setAttributes( { content: newDescription } );
+		};
+
+		const onChangeLink = ( newLink ) => {
+			setAttributes( { content: newLink } );
 		};
 
 		const onChangeTextField = ( newValue ) => {
-			props.setAttributes( { imagelink: newValue } );
+			setAttributes( { imagelink: newValue } );
 		};
 
 		return (
@@ -86,16 +105,16 @@ registerBlockType( 'block-article/article-block', {
 					<TextControl
 						label="Image Link"
 						help="Link to Add to the Image Thumbnail"
-						value={ attributes.imagelink }
+						value={ imagelink }
 						onChange={ onChangeTextField }
 					/>
 				</InspectorControls>
-				<div className={ props.className }>
+				<div className={ className }>
 					<RichText
 						tagName="h3"
 						inline="true"
 						placeholder={ __( 'Article Title', 'block-article' ) }
-						value={ attributes.title }
+						value={ title }
 						onChange={ onChangeTitle }
 						className="article-title"
 					/>
@@ -103,7 +122,7 @@ registerBlockType( 'block-article/article-block', {
 						tagName="span"
 						inline="false"
 						placeholder={ __( 'Article Date', 'block-article' ) }
-						value={ attributes.date }
+						value={ date }
 						onChange={ onChangeDate }
 						className="image-marker image-marker-date"
 					/>
@@ -111,9 +130,9 @@ registerBlockType( 'block-article/article-block', {
 						<MediaUpload
 							onSelect={ onSelectImage }
 							allowedTypes="image"
-							value={ attributes.mediaID }
+							value={ mediaID }
 							render={ ( { open } ) => (
-								<Button
+								<Flex
 									className={
 										mediaID
 											? 'image-button'
@@ -122,20 +141,17 @@ registerBlockType( 'block-article/article-block', {
 									onClick={ open }
 								>
 									{ ! mediaID ? (
-										__(
-											'Upload Image',
-											'gutenberg-examples'
-										)
+										__( 'Upload Image', 'block-article' )
 									) : (
 										<img
 											src={ mediaURL }
 											alt={ __(
-												'Upload Recipe Image',
-												'gutenberg-examples'
+												'Upload Image',
+												'block-article'
 											) }
 										/>
 									) }
-								</Button>
+								</Flex>
 							) }
 						/>
 					</div>
@@ -146,66 +162,61 @@ registerBlockType( 'block-article/article-block', {
 							'Article Description',
 							'block-article'
 						) }
-						value={ attributes.description }
-						onChange={ props.setAttributes( {
-							description: value,
-						} ) }
+						value={ description }
+						onChange={ onChangeDescription }
 					/>
 					<RichText
 						className="article-link"
 						tagName="span"
 						inline="false"
 						placeholder={ __( 'Article Link', 'block-article' ) }
-						value={ attributes.link }
-						onChange={ props.setAttributes( { link: value } ) }
+						value={ link }
+						onChange={ onChangeLink }
 					/>
 				</div>
 			</div>
 		);
 	},
-	save: ( props ) => {
-		const { attributes } = props;
 
-		return el(
-			'article',
-			{ className: props.className + ' article article-sm' },
-			attributes.mediaURL &&
-				el(
-					'a',
-					{
-						className: 'wp-block-image article-image imagelink',
-						href: attributes.imagelink,
-						target: '_blank',
-						rel: 'noopener noreferrer',
-					},
-					el( RichText.Content, {
-						tagName: 'span',
-						className: 'image-marker image-marker-date',
-						value: attributes.date,
-					} ),
-					el( 'img', { src: attributes.mediaURL } )
-				),
-			el( RichText.Content, {
-				tagName: 'h3',
-				className: 'article-title',
-				value: attributes.title,
-			} ),
-			el( RichText.Content, {
-				tagName: 'p',
-				className: 'article-description',
-				value: attributes.description,
-			} ),
-			el(
-				'p',
-				{
-					className: 'article-read-more',
-				},
-				el( RichText.Content, {
-					tagName: 'span',
-					className: 'btn-sm article-link',
-					value: attributes.link,
-				} )
-			)
+	save: ( props ) => {
+		const {
+			className,
+			attributes: { title, date, mediaURL, description, link, imagelink },
+		} = props;
+
+		return (
+			<article className={ className + ' article article-sm' }>
+				<a
+					className="wp-block-image article-image imagelink"
+					href={ imagelink }
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<RichText
+						tagName="span"
+						className="image-marker image-marker-date"
+						value={ date }
+					/>
+					<img src={ mediaURL } alt="" />
+				</a>
+				<RichText
+					tagName="h3"
+					className="article-title"
+					value={ title }
+				/>
+				<RichText
+					tagName="p"
+					className="article-description"
+					value={ description }
+				/>
+				<RichText tagName="p" className="article-read-more">
+					<RichText
+						tagName="span"
+						className="btn-sm article-link"
+						value={ link }
+					/>
+				</RichText>
+			</article>
 		);
 	},
 } );
