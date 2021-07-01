@@ -59,103 +59,112 @@ registerBlockType( 'block-article/article-block', {
 	},
 
 	edit: ( props ) => {
-		let attributes = props.attributes;
+		const attributes = props.attributes;
 
-		let onSelectImage = ( media ) => {
+		const onSelectImage = ( media ) => {
 			return props.setAttributes( {
 				mediaURL: media.url,
 				mediaID: media.id,
 			} );
 		};
 
-		let onChangeTextField = ( newValue ) => {
+		const onChangeTitle = ( newTitle ) => {
+			props.setAttributes( { content: newTitle } );
+		};
+
+		const onChangeDate = ( newDate ) => {
+			props.setAttributes( { content: newDate } );
+		};
+
+		const onChangeTextField = ( newValue ) => {
 			props.setAttributes( { imagelink: newValue } );
 		};
 
-		return [
-			el(
-				InspectorControls,
-				null,
-				el( TextControl, {
-					label: 'Image Link',
-					help: 'Link to Add to the Image Thumbnail',
-					value: attributes.imagelink,
-					onChange: onChangeTextField,
-				} )
-			),
-			el(
-				'div',
-				{ className: props.className },
-				el( RichText, {
-					tagName: 'h3',
-					inline: true,
-					placeholder: i18n.__( 'Article Title', 'block-article' ),
-					value: attributes.title,
-					onChange: ( value ) => {
-						props.setAttributes( { title: value } );
-					},
-					className: 'article-title',
-				} ),
-				el( RichText, {
-					tagName: 'span',
-					inline: false,
-					placeholder: i18n.__( 'Article Date', 'block-article' ),
-					value: attributes.date,
-					onChange: ( value ) => {
-						props.setAttributes( { date: value } );
-					},
-					className: 'image-marker image-marker-date',
-				} ),
-				el(
-					'div',
-					{ className: 'article-image' },
-					el( MediaUpload, {
-						onSelect: onSelectImage,
-						allowedTypes: 'image',
-						value: attributes.mediaID,
-						render: ( obj ) => {
-							return el(
-								components.Flex,
-								{
-									className: attributes.mediaID
-										? 'image-button'
-										: 'button button-large',
-									onClick: obj.open,
-								},
-								! attributes.mediaID
-									? __( 'Upload Image', 'block-article' )
-									: el( 'img', { src: attributes.mediaURL } )
-							);
-						},
-					} )
-				),
-				el( RichText, {
-					tagName: 'p',
-					placeholder: i18n.__(
-						'Article Description',
-						'block-article'
-					),
-					value: attributes.description,
-					onChange: ( value ) => {
-						props.setAttributes( { description: value } );
-					},
-					className: 'article-description',
-				} ),
-				el( RichText, {
-					tagName: 'span',
-					inline: false,
-					placeholder: i18n.__( 'Article Link', 'block-article' ),
-					value: attributes.link,
-					onChange: ( value ) => {
-						props.setAttributes( { link: value } );
-					},
-					className: 'article-link',
-				} )
-			),
-		];
+		return (
+			<div>
+				<InspectorControls>
+					<TextControl
+						label="Image Link"
+						help="Link to Add to the Image Thumbnail"
+						value={ attributes.imagelink }
+						onChange={ onChangeTextField }
+					/>
+				</InspectorControls>
+				<div className={ props.className }>
+					<RichText
+						tagName="h3"
+						inline="true"
+						placeholder={ __( 'Article Title', 'block-article' ) }
+						value={ attributes.title }
+						onChange={ onChangeTitle }
+						className="article-title"
+					/>
+					<RichText
+						tagName="span"
+						inline="false"
+						placeholder={ __( 'Article Date', 'block-article' ) }
+						value={ attributes.date }
+						onChange={ onChangeDate }
+						className="image-marker image-marker-date"
+					/>
+					<div className="article-image">
+						<MediaUpload
+							onSelect={ onSelectImage }
+							allowedTypes="image"
+							value={ attributes.mediaID }
+							render={ ( { open } ) => (
+								<Button
+									className={
+										mediaID
+											? 'image-button'
+											: 'button button-large'
+									}
+									onClick={ open }
+								>
+									{ ! mediaID ? (
+										__(
+											'Upload Image',
+											'gutenberg-examples'
+										)
+									) : (
+										<img
+											src={ mediaURL }
+											alt={ __(
+												'Upload Recipe Image',
+												'gutenberg-examples'
+											) }
+										/>
+									) }
+								</Button>
+							) }
+						/>
+					</div>
+					<RichText
+						className="article-description"
+						tagName="p"
+						placeholder={ __(
+							'Article Description',
+							'block-article'
+						) }
+						value={ attributes.description }
+						onChange={ props.setAttributes( {
+							description: value,
+						} ) }
+					/>
+					<RichText
+						className="article-link"
+						tagName="span"
+						inline="false"
+						placeholder={ __( 'Article Link', 'block-article' ) }
+						value={ attributes.link }
+						onChange={ props.setAttributes( { link: value } ) }
+					/>
+				</div>
+			</div>
+		);
 	},
 	save: ( props ) => {
-		let attributes = props.attributes;
+		const { attributes } = props;
 
 		return el(
 			'article',
