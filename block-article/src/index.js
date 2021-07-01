@@ -4,7 +4,7 @@ import {
 	RichText,
 	MediaUpload,
 	InspectorControls,
-} from '@wordpress/blockEditor';
+} from '@wordpress/block-editor';
 import { TextControl, Flex } from '@wordpress/components';
 
 registerBlockType( 'block-article/article-block', {
@@ -45,18 +45,17 @@ registerBlockType( 'block-article/article-block', {
 			type: 'string',
 		},
 	},
-
 	example: {
 		attributes: {
 			title: __( 'Article Title', 'block-article' ),
 			date: __( 'Article Date', 'block-article' ),
+			mediaID:'',
 			mediaURL: '',
 			description: __( 'Article Description', 'block-article' ),
 			link: __( 'Article Link', 'block-article' ),
 			imagelink: __( 'Article Image Link', 'block-article' ),
 		},
 	},
-
 	edit: ( props ) => {
 		const {
 			className,
@@ -73,30 +72,30 @@ registerBlockType( 'block-article/article-block', {
 		} = props;
 
 		const onSelectImage = ( media ) => {
-			return props.setAttributes( {
+			return setAttributes( {
 				mediaURL: media.url,
 				mediaID: media.id,
 			} );
 		};
 
-		const onChangeTitle = ( newTitle ) => {
-			setAttributes( { content: newTitle } );
+		const onChangeTitle = ( value ) => {
+			setAttributes( { title: value } );
 		};
 
-		const onChangeDate = ( newDate ) => {
-			setAttributes( { content: newDate } );
+		const onChangeDate = ( value ) => {
+			setAttributes( { date: value } );
 		};
 
-		const onChangeDescription = ( newDescription ) => {
-			setAttributes( { content: newDescription } );
+		const onChangeDescription = ( value ) => {
+			setAttributes( { description: value } );
 		};
 
-		const onChangeLink = ( newLink ) => {
-			setAttributes( { content: newLink } );
+		const onChangeLink = ( value ) => {
+			setAttributes( { link: value } );
 		};
 
-		const onChangeTextField = ( newValue ) => {
-			setAttributes( { imagelink: newValue } );
+		const onChangeImageLink = ( value ) => {
+			setAttributes( { imagelink: value } );
 		};
 
 		return (
@@ -106,7 +105,7 @@ registerBlockType( 'block-article/article-block', {
 						label="Image Link"
 						help="Link to Add to the Image Thumbnail"
 						value={ imagelink }
-						onChange={ onChangeTextField }
+						onChange={ onChangeImageLink }
 					/>
 				</InspectorControls>
 				<div className={ className }>
@@ -181,7 +180,14 @@ registerBlockType( 'block-article/article-block', {
 	save: ( props ) => {
 		const {
 			className,
-			attributes: { title, date, mediaURL, description, link, imagelink },
+			attributes: { 
+				title,
+				date, 
+				mediaURL,
+				description,
+				link,
+				imagelink 
+			},
 		} = props;
 
 		return (
@@ -192,30 +198,35 @@ registerBlockType( 'block-article/article-block', {
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<RichText
+					<RichText.Content
 						tagName="span"
 						className="image-marker image-marker-date"
 						value={ date }
 					/>
-					<img src={ mediaURL } alt="" />
+					{ mediaURL && (
+						<img src={ mediaURL } alt="" />
+					) }
 				</a>
-				<RichText
+				<RichText.Content
 					tagName="h3"
 					className="article-title"
 					value={ title }
 				/>
-				<RichText
+				<RichText.Content
 					tagName="p"
 					className="article-description"
 					value={ description }
 				/>
-				<RichText tagName="p" className="article-read-more">
-					<RichText
+				<RichText.Content
+					tagName="p"
+					className="article-read-more"
+				>
+					<RichText.Content
 						tagName="span"
 						className="btn-sm article-link"
 						value={ link }
 					/>
-				</RichText>
+				</RichText.Content>
 			</article>
 		);
 	},
