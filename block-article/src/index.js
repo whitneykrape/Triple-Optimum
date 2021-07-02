@@ -5,7 +5,7 @@ import {
 	MediaUpload,
 	InspectorControls,
 } from '@wordpress/block-editor';
-import { TextControl, Flex } from '@wordpress/components';
+import { TextControl, Flex, DateTimePicker } from '@wordpress/components';
 
 registerBlockType( 'block-article/article-block', {
 	title: __( 'Triple Optimum: Article', 'block-article' ),
@@ -49,7 +49,7 @@ registerBlockType( 'block-article/article-block', {
 		attributes: {
 			title: __( 'Article Title', 'block-article' ),
 			date: __( 'Article Date', 'block-article' ),
-			mediaID:'',
+			mediaID: '',
 			mediaURL: '',
 			description: __( 'Article Description', 'block-article' ),
 			link: __( 'Article Link', 'block-article' ),
@@ -107,6 +107,11 @@ registerBlockType( 'block-article/article-block', {
 						value={ imagelink }
 						onChange={ onChangeImageLink }
 					/>
+					<DateTimePicker
+						currentDate={ date }
+						onChange={ onChangeDate }
+						is12Hour={ true }
+					/>
 				</InspectorControls>
 				<div className={ className }>
 					<RichText
@@ -122,7 +127,6 @@ registerBlockType( 'block-article/article-block', {
 						inline="false"
 						placeholder={ __( 'Article Date', 'block-article' ) }
 						value={ date }
-						onChange={ onChangeDate }
 						className="image-marker image-marker-date"
 					/>
 					<div className="article-image">
@@ -180,14 +184,7 @@ registerBlockType( 'block-article/article-block', {
 	save: ( props ) => {
 		const {
 			className,
-			attributes: { 
-				title,
-				date, 
-				mediaURL,
-				description,
-				link,
-				imagelink 
-			},
+			attributes: { title, date, mediaURL, description, link, imagelink },
 		} = props;
 
 		return (
@@ -203,9 +200,7 @@ registerBlockType( 'block-article/article-block', {
 						className="image-marker image-marker-date"
 						value={ date }
 					/>
-					{ mediaURL && (
-						<img src={ mediaURL } alt="" />
-					) }
+					{ mediaURL && <img src={ mediaURL } alt="" /> }
 				</a>
 				<RichText.Content
 					tagName="h3"
@@ -217,10 +212,7 @@ registerBlockType( 'block-article/article-block', {
 					className="article-description"
 					value={ description }
 				/>
-				<RichText.Content
-					tagName="p"
-					className="article-read-more"
-				>
+				<RichText.Content tagName="p" className="article-read-more">
 					<RichText.Content
 						tagName="span"
 						className="btn-sm article-link"

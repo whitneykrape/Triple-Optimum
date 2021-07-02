@@ -24,5 +24,11 @@
 		"lint:js": "wp-scripts lint-js",
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start"
+	},
+	"dependencies": {
+		"@wordpress/blocks": "^9.1.4",
+		"@wordpress/components": "^14.1.5",
+		"@wordpress/editor": "^10.1.11",
+		"@wordpress/i18n": "^4.1.1"
 	}
 }
