@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: Article Block
+ * Plugin Name: Wood Block
  * Plugin URI: 
- * Description: 
+ * Description: A wood block style title, short sentence display. (Large letter, solid border.)
  * Version: 0.0.1
  * Author: 
  *
