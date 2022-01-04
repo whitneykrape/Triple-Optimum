@@ -1,0 +1,41 @@
+article {
+	padding: 20px;
+    align-items: stretch;
+    background: #aaa;
+    margin: 1% 0 5%;
+}
+
+.article-image.imagelink {
+	order: 0;
+    box-shadow: none;
+    margin: -20px 0px -20px -20px;
+    z-index: 2000;
+    position: relative;
+    height: auto;
+    // width: 250%;
+    align-content: stretch;
+    border: 0px;
+
+
+}
+
+.article-image.imagelink img {
+	height: 100%;
+	box-shadow: none;
+	width: 100%;
+}
+
+article .article-text-block {
+	background: #fff;
+    position: relative;
+    z-index: 9000;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+article time {
+	order: 1;
+	margin: -6% 0 0 0;
+	font-size: 1em;
+	padding: 0.5em 2% 0.5em 20px;
+}

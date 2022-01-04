@@ -15,6 +15,7 @@
 		"url": ""
 	},
 	"main": "build/index.js",
+	"style": "file:./src/style.css",
 	"devDependencies": {
 		"@wordpress/scripts": "^9.0.0"
 	},
