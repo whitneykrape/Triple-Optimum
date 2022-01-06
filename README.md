@@ -1,4 +1,6 @@
 # Triple Optimum Blocks
+Note, currently making 1 Article block, then will build from there.
+
 A collection of blocks, starting from 1 that needs recoding, that will be:
 1. Plug-and-play.
 2. Coded in ES6 (overall ES next) using @wordpress/scripts.

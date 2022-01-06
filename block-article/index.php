@@ -32,16 +32,27 @@ function block_template_register_block() {
 	// automatically load dependencies and version
 	$asset_file = include( plugin_dir_path( __FILE__ ) . 'build/index.asset.php');
 
-	wp_register_script(
-		'block-article',
-		plugins_url( 'build/index.js', __FILE__ ),
-		$asset_file['dependencies'],
-		$asset_file['version']
-	);
+  /* 
+  // Not working... Does it need both to be registered then enqueued?
+  wp_register_script(
+    'block-article',
+    plugins_url( 'build/index.js', __FILE__ ),
+    $asset_file['dependencies'],
+    $asset_file['version']
+  );
 
-	register_block_type( 'block-article/block_template_esnext', array(
-		'editor_script' => 'block_template_esnext',
-	) );
+  // This is in the dedicated file so really don't think that is needed.
+  register_block_type( 'block-article/article-block', array(
+    'editor_script' => 'article-block',
+  ) );
+  */
+
+  wp_enqueue_script(
+    'block-article',
+    plugins_url( 'build/index.js', __FILE__ ),
+    $asset_file['dependencies'],
+    $asset_file['version']
+  );
 
   if ( function_exists( 'wp_set_script_translations' ) ) {
     /**
@@ -49,7 +60,7 @@ function block_template_register_block() {
      * plugin_dir_path( MY_PLUGIN ) . 'languages' ) ). For details see
      * https://make.wordpress.org/core/2018/11/09/new-javascript-i18n-support-in-wordpress/
      */
-    wp_set_script_translations( 'block_template_esnext', 'block-article' );
+    wp_set_script_translations( 'article-block', 'block-article' );
   }
 
 }
