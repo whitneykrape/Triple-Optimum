@@ -54,6 +54,8 @@ function block_template_register_block() {
     $asset_file['version']
   );
 
+  add_editor_style( 'src/style-editor.css' );
+
   if ( function_exists( 'wp_set_script_translations' ) ) {
     /**
      * May be extended to wp_set_script_translations( 'my-handle', 'my-domain',

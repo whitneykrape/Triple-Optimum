@@ -100,7 +100,7 @@ registerBlockType( 'block-article/article-block', {
 
 		return (
 			<div>
-				<InspectorControls>
+				<InspectorControls className="article-image imagelink">
 					<TextControl
 						label="Image Link"
 						help="Link to Add to the Image Thumbnail"
