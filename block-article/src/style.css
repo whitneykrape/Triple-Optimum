@@ -38,6 +38,8 @@
     z-index: 9000;
     padding: 20px;
     border-radius: 4px;
+    width: 100%;
+    margin-right: 20px;
 }
 
 .block-feature-posts article .article-text-block {
