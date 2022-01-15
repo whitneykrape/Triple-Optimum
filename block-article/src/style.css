@@ -68,3 +68,16 @@
 .block-feature-posts article .article-text-block .article-title {
     margin: 0;
 }
+
+.block-feature-posts article time {
+    order: 1;
+    margin: -6% 0 0 0;
+    font-size: 1em;
+    padding: 0.5em 2% 0.5em 20px;
+}
+
+@media (min-width: 768px) {
+    .block-feature-posts article time {
+        flex: 0 1 70%;
+    }
+}
