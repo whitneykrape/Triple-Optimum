@@ -1,225 +1,27 @@
-import { __ } from '@wordpress/i18n';
-import { registerBlockType } from '@wordpress/blocks';
-import {
-	RichText,
-	MediaUpload,
-	InspectorControls,
-} from '@wordpress/block-editor';
-import { TextControl, Flex, DateTimePicker } from '@wordpress/components';
+( function( blocks, i18n, element, blockEditor ) {
+	var el = element.createElement;
+	var __ = i18n.__;
 
-registerBlockType( 'block-article/article-block', {
-	title: __( 'Triple Optimum: Article', 'block-article' ),
-	icon: 'index-card',
-	category: 'layout',
-	attributes: {
-		title: {
-			type: 'array',
-			source: 'children',
-			selector: '.article-title',
+	var useBlockProps = blockEditor.useBlockProps;
+
+	blocks.registerBlockType( 'block-article/article-block', {
+		title: __( 'Triple Optimum: Article', 'block-article' ),
+		icon: 'universal-access-alt',
+		category: 'layout',
+		example: {},
+		edit: function( props ) {
+			return el(
+				'p',
+				useBlockProps( { className: props.className } ),
+				__( 'Hello World, step 2 (from the editor, in green).', 'block-article' )
+			);
 		},
-		date: {
-			type: 'array',
-			source: 'children',
-			selector: '.image-marker',
+		save: function() {
+			return el(
+				'p',
+				useBlockProps.save(),
+				__( 'Hello World, step 2 (from the frontend, in red).', 'block-article' )
+			);
 		},
-		mediaID: {
-			type: 'number',
-		},
-		mediaURL: {
-			type: 'string',
-			source: 'attribute',
-			selector: 'img',
-			attribute: 'src',
-		},
-		description: {
-			type: 'array',
-			source: 'children',
-			selector: '.article-description',
-		},
-		link: {
-			type: 'array',
-			source: 'children',
-			selector: '.article-link',
-		},
-		imagelink: {
-			type: 'string',
-		},
-	},
-	example: {
-		attributes: {
-			title: __( 'Article Title', 'block-article' ),
-			date: __( 'Article Date', 'block-article' ),
-			mediaID: '',
-			mediaURL: '',
-			description: __( 'Article Description', 'block-article' ),
-			link: __( 'Article Link', 'block-article' ),
-			imagelink: __( 'Article Image Link', 'block-article' ),
-		},
-	},
-	edit: ( props ) => {
-		const {
-			className,
-			attributes: {
-				title,
-				date,
-				mediaID,
-				mediaURL,
-				description,
-				link,
-				imagelink,
-			},
-			setAttributes,
-		} = props;
-
-		const onSelectImage = ( media ) => {
-			return setAttributes( {
-				mediaURL: media.url,
-				mediaID: media.id,
-			} );
-		};
-
-		const onChangeTitle = ( value ) => {
-			setAttributes( { title: value } );
-		};
-
-		const onChangeDate = ( value ) => {
-			setAttributes( { date: value } );
-		};
-
-		const onChangeDescription = ( value ) => {
-			setAttributes( { description: value } );
-		};
-
-		const onChangeLink = ( value ) => {
-			setAttributes( { link: value } );
-		};
-
-		const onChangeImageLink = ( value ) => {
-			setAttributes( { imagelink: value } );
-		};
-
-		return (
-			<div>
-				<InspectorControls className="article-image imagelink">
-					<TextControl
-						label="Image Link"
-						help="Link to Add to the Image Thumbnail"
-						value={ imagelink }
-						onChange={ onChangeImageLink }
-					/>
-					<DateTimePicker
-						currentDate={ date }
-						onChange={ onChangeDate }
-						is12Hour={ true }
-					/>
-				</InspectorControls>
-				<div className={ className }>
-					<RichText
-						tagName="h3"
-						inline="true"
-						placeholder={ __( 'Article Title', 'block-article' ) }
-						value={ title }
-						onChange={ onChangeTitle }
-						className="article-title"
-					/>
-					<RichText
-						tagName="span"
-						inline="false"
-						placeholder={ __( 'Article Date', 'block-article' ) }
-						value={ date }
-						className="image-marker image-marker-date"
-					/>
-					<div className="article-image">
-						<MediaUpload
-							onSelect={ onSelectImage }
-							allowedTypes="image"
-							value={ mediaID }
-							render={ ( { open } ) => (
-								<Flex
-									className={
-										mediaID
-											? 'image-button'
-											: 'button button-large'
-									}
-									onClick={ open }
-								>
-									{ ! mediaID ? (
-										__( 'Upload Image', 'block-article' )
-									) : (
-										<img
-											src={ mediaURL }
-											alt={ __(
-												'Upload Image',
-												'block-article'
-											) }
-										/>
-									) }
-								</Flex>
-							) }
-						/>
-					</div>
-					<RichText
-						className="article-description"
-						tagName="p"
-						placeholder={ __(
-							'Article Description',
-							'block-article'
-						) }
-						value={ description }
-						onChange={ onChangeDescription }
-					/>
-					<RichText
-						className="article-link"
-						tagName="span"
-						inline="false"
-						placeholder={ __( 'Article Link', 'block-article' ) }
-						value={ link }
-						onChange={ onChangeLink }
-					/>
-				</div>
-			</div>
-		);
-	},
-
-	save: ( props ) => {
-		const {
-			className,
-			attributes: { title, date, mediaURL, description, link, imagelink },
-		} = props;
-
-		return (
-			<article className={ className + ' article article-sm' }>
-				<a
-					className="wp-block-image article-image imagelink"
-					href={ imagelink }
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<RichText.Content
-						tagName="span"
-						className="image-marker image-marker-date"
-						value={ date }
-					/>
-					{ mediaURL && <img src={ mediaURL } alt="" /> }
-				</a>
-				<RichText.Content
-					tagName="h3"
-					className="article-title"
-					value={ title }
-				/>
-				<RichText.Content
-					tagName="p"
-					className="article-description"
-					value={ description }
-				/>
-				<RichText.Content tagName="p" className="article-read-more">
-					<RichText.Content
-						tagName="span"
-						className="btn-sm article-link"
-						value={ link }
-					/>
-				</RichText.Content>
-			</article>
-		);
-	},
-} );
+	} );
+}( window.wp.blocks, window.wp.i18n, window.wp.element, window.wp.blockEditor ) );

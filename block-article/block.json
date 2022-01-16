@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/block.json",
+	"apiVersion": 2,
+	"name": "block-article/article-block",
+	"title": "Triple Optimum: Article",
+	"icon": "index-card",
+	"category": "layout",
+	"example": {},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/style-editor.css",
+	"style": "file:./build/style.css"
+}
