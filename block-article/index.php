@@ -4,7 +4,7 @@
  * Plugin Name: Article Block
  * Plugin URI: 
  * Description: 
- * Version: 0.0.1
+ * Version: 0.0.5
  * Author: 
  *
  * @package block_template
