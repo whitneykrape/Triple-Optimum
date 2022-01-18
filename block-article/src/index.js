@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import {
+	useBlockProps,
 	RichText,
 	MediaUpload,
 	InspectorControls,
@@ -8,6 +9,7 @@ import {
 import { TextControl, Flex, DateTimePicker } from '@wordpress/components';
 
 registerBlockType( 'block-article/article-block', {
+	apiVersion: 2,
 	title: __( 'Triple Optimum: Article', 'block-article' ),
 	icon: 'index-card',
 	category: 'layout',
@@ -57,7 +59,7 @@ registerBlockType( 'block-article/article-block', {
 		},
 	},
 	edit: ( props ) => {
-		const {
+		let {
 			className,
 			attributes: {
 				title,
@@ -69,37 +71,41 @@ registerBlockType( 'block-article/article-block', {
 				imagelink,
 			},
 			setAttributes,
-		} = props;
+		} = props
 
 		const onSelectImage = ( media ) => {
 			return setAttributes( {
 				mediaURL: media.url,
 				mediaID: media.id,
-			} );
-		};
+			} )
+		}
 
 		const onChangeTitle = ( value ) => {
 			setAttributes( { title: value } );
-		};
+		}
 
 		const onChangeDate = ( value ) => {
 			setAttributes( { date: value } );
-		};
+		}
 
 		const onChangeDescription = ( value ) => {
 			setAttributes( { description: value } );
-		};
+		}
 
 		const onChangeLink = ( value ) => {
 			setAttributes( { link: value } );
-		};
+		}
 
 		const onChangeImageLink = ( value ) => {
 			setAttributes( { imagelink: value } );
-		};
+		}
+
+		const blockProps = useBlockProps( {
+		        className: className
+		    } )
 
 		return (
-			<div className="wp-block">
+			<>
 				<InspectorControls className="article-image imagelink">
 					<TextControl
 						label="Image Link"
@@ -113,7 +119,7 @@ registerBlockType( 'block-article/article-block', {
 						is12Hour={ true }
 					/>
 				</InspectorControls>
-				<div className={ className }>
+				<div { ...blockProps }>
 					<RichText
 						tagName="h3"
 						inline="true"
@@ -177,7 +183,7 @@ registerBlockType( 'block-article/article-block', {
 						onChange={ onChangeLink }
 					/>
 				</div>
-			</div>
+			</>
 		);
 	},
 
@@ -187,8 +193,12 @@ registerBlockType( 'block-article/article-block', {
 			attributes: { title, date, mediaURL, description, link, imagelink },
 		} = props;
 
+		const blockProps = useBlockProps.save( {
+		        className: className
+		    } )
+
 		return (
-			<article className={ className + ' article article-sm' }>
+			<article { ...blockProps }>
 				<a
 					className="wp-block-image article-image imagelink"
 					href={ imagelink }

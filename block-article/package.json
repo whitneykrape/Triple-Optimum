@@ -1,6 +1,6 @@
 {
 	"name": "block-template",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": true,
 	"description": "Overall Template for Starting a new Sub-Block",
 	"author": "Form Function IO",
@@ -14,10 +14,15 @@
 	"bugs": {
 		"url": ""
 	},
-	"main": "build/index.js",
-	"style": "file:./src/style.css",
 	"devDependencies": {
-		"@wordpress/scripts": "^9.0.0"
+		"@wordpress/scripts": "^9.0.0",
+		"gulp-cssimport": "^7.0.0",
+		"gulp-cssnano": "^2.1.0",
+		"gulp-postcss": "^9.0.0",
+		"gulp-sass": "^3.0.0",
+		"gulp-sourcemaps": "^3.0.0",
+    	"gulp-autoprefixer": "^3.1.0",
+		"postcss-normalize": "^10.0.0"
 	},
 	"scripts": {
 		"build": "wp-scripts build",
@@ -30,6 +35,7 @@
 		"@wordpress/blocks": "^9.1.4",
 		"@wordpress/components": "^14.1.5",
 		"@wordpress/editor": "^10.1.11",
-		"@wordpress/i18n": "^4.1.1"
+		"@wordpress/i18n": "^4.1.1",
+		"gulp": "^4.0.2"
 	}
 }
