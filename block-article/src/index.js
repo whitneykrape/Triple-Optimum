@@ -120,21 +120,6 @@ registerBlockType( 'block-article/article-block', {
 					/>
 				</InspectorControls>
 				<div { ...blockProps }>
-					<RichText
-						tagName="h3"
-						inline="true"
-						placeholder={ __( 'Article Title', 'block-article' ) }
-						value={ title }
-						onChange={ onChangeTitle }
-						className="article-title"
-					/>
-					<RichText
-						tagName="span"
-						inline="false"
-						placeholder={ __( 'Article Date', 'block-article' ) }
-						value={ date }
-						className="image-marker image-marker-date"
-					/>
 					<div className="article-image">
 						<MediaUpload
 							onSelect={ onSelectImage }
@@ -164,24 +149,43 @@ registerBlockType( 'block-article/article-block', {
 							) }
 						/>
 					</div>
-					<RichText
-						className="article-description"
-						tagName="p"
-						placeholder={ __(
-							'Article Description',
-							'block-article'
-						) }
-						value={ description }
-						onChange={ onChangeDescription }
-					/>
-					<RichText
-						className="article-link"
-						tagName="span"
-						inline="false"
-						placeholder={ __( 'Article Link', 'block-article' ) }
-						value={ link }
-						onChange={ onChangeLink }
-					/>
+
+					<div className="article-text-block">
+						<RichText
+							tagName="h3"
+							inline="true"
+							placeholder={ __( 'Article Title', 'block-article' ) }
+							value={ title }
+							onChange={ onChangeTitle }
+							className="article-title"
+						/>
+						<RichText
+							tagName="span"
+							inline="false"
+							placeholder={ __( 'Article Date', 'block-article' ) }
+							value={ date }
+							className="image-marker image-marker-date"
+						/>
+
+						<RichText
+							className="article-description"
+							tagName="p"
+							placeholder={ __(
+								'Article Description',
+								'block-article'
+							) }
+							value={ description }
+							onChange={ onChangeDescription }
+						/>
+						<RichText
+							className="article-link"
+							tagName="span"
+							inline="false"
+							placeholder={ __( 'Article Link', 'block-article' ) }
+							value={ link }
+							onChange={ onChangeLink }
+						/>
+					</div>
 				</div>
 			</>
 		);

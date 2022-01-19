@@ -4,16 +4,72 @@
 
     }
 }
-*/
+
 
 .wp-block-block-article-article-block {
     display: flex;
     
     .article-image {
-        align-self: left;
+        order: 0;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 25%; 
+
+        .button {
+            height: 100%;
+        }
+    }
+
+    .article-title,
+    .image-marker-date,
+    .article-description,
+    .article-link {
+        order: 1;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 75%;
     }
 }
+*/
+
+.wp-block-block-article-article-block {
+    padding: 20px;
+    align-items: stretch;
+    background: #aaa;
+    margin: 1% 0 5%;
+    display: flex;
+    max-height: 340px;
+    padding: 20px 0 20px 20px;
+
+    .article-image {
+        order: 0;
+        box-shadow: none;
+        margin: -20px 0px -20px -20px;
+        z-index: 2000;
+        position: relative;
+        height: auto;
+        align-content: stretch;
+        border: 0px;
+
+        button {
+            height: 100%;
+            box-shadow: none;
+            width: 100%;
+            width: initial;
+        }
+    }
+
+    .article-text-block {
+        background: #fff;
+        position: relative;
+        z-index: 9000;
+        padding: 20px;
+        border-radius: 4px;
+        margin-left: -64px;
 
 
-.article-description {
+        .article-title {
+            margin: 0;
+        }
+    }
 }
