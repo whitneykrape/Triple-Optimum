@@ -1,4 +1,4 @@
-.block-feature-posts article {
+.wp-block-block-article-article-block {
     padding: 20px;
     align-items: stretch;
     background: #aaa;
@@ -7,7 +7,7 @@
     max-height: 340px;
     padding: 20px 0 20px 20px;
 
-    .article-image.imagelink {
+    .article-image {
         order: 0;
         box-shadow: none;
         margin: -20px 0px -20px -20px;
