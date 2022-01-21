@@ -17,11 +17,13 @@
         align-content: stretch;
         border: 0px;
 
-        img {
+        img,
+        button {
             height: 100%;
             box-shadow: none;
             width: 100%;
             width: initial;
+            max-width: initial;
         }
     }
 
@@ -32,7 +34,8 @@
         padding: 20px;
         border-radius: 4px;
         margin-left: -64px;
-
+        width: 100%;
+        margin-right: 20px;
 
         .article-title {
             margin: 0;
