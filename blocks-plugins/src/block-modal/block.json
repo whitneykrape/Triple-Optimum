@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/gutenpride",
+	"name": "stitchedblocks/block-modal-content",
 	"version": "0.1.0",
-	"title": "Modal Body",
+	"title": "Modal Content",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
@@ -22,14 +22,14 @@
 			"type": "number", 
 			"default": 3 
 		},
-		"showOn": {
+		"tabIdentifier": {
 			"type": "string",
 			"default": "Select an Option"
 		}
 	},
 	"textdomain": "gutenpride",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
+	"editorStyle": "file:./css/block-modal-back-end.css",
+	"style": "file:./css/block-modal-front-end.css",
 	"viewScript": "file:./view.js"
 }

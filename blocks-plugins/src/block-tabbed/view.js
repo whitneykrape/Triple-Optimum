@@ -23,23 +23,3 @@
 /* eslint-disable no-console */
 console.log('Hello World! (from create-block-gutenpride block)');
 /* eslint-enable no-console */
-
-window.addEventListener('load', listener = () => {
-    let $arrayOfModelOpeners = document.querySelectorAll('.modalOpener');
-    let $arrayOfModelBodies  = document.querySelectorAll('.modalbody');
-
-    console.log($arrayOfModelOpeners)
-
-    $arrayOfModelOpeners.forEach((slide, index) => {
-        console.log(slide)
-        console.log(index)
-
-        $referenceToModalBody = slide.dataset.openmodalbody;
-
-        slide.addEventListener("click", clickShowModalBodyEvent = (e) => {
-            console.log(e)
-
-            $arrayOfModelBodies[$referenceToModalBody].parent().classList.toggle("show")
-        })
-    })
-})

@@ -9,9 +9,9 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps, InnerBlocks, PlainText } from '@wordpress/block-editor';
 import { SelectControl, PanelBody, Placeholder, TextControl } from '@wordpress/components';
-import './editor.scss';
+import '../css/block-modal-back-end.scss';
 
-export default function Edit( { attributes, setAttributes, isSelected, clientId } ) {
+export default function EditContent( { attributes, setAttributes, isSelected, clientId } ) {
 
 	function checkInnerblockSelected () {
 
@@ -38,7 +38,7 @@ export default function Edit( { attributes, setAttributes, isSelected, clientId 
 		}
 	}
 
-	const allowedBlocks = ["my-plugin/custom-inner-block"];
+	const allowedBlocks = ["stitchedblocks/block-modal-content"];
 	
     return (
         <div { ...useBlockProps() }>

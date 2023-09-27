@@ -28,7 +28,8 @@ window.addEventListener('load', listener = () => {
     let $arrayOfModelOpeners = document.querySelectorAll('.modalOpener');
     let $arrayOfModelBodies  = document.querySelectorAll('.modalbody');
 
-    console.log($arrayOfModelOpeners)
+    console.log('$arrayOfModelBodies')
+    console.log($arrayOfModelBodies)
 
     $arrayOfModelOpeners.forEach((slide, index) => {
         console.log(slide)
@@ -36,10 +37,13 @@ window.addEventListener('load', listener = () => {
 
         $referenceToModalBody = slide.dataset.openmodalbody;
 
+        console.log('$referenceToModalBody')
+        console.log($referenceToModalBody)
+
         slide.addEventListener("click", clickShowModalBodyEvent = (e) => {
             console.log(e)
 
-            $arrayOfModelBodies[$referenceToModalBody].parent().classList.toggle("show")
+            $arrayOfModelBodies[$referenceToModalBody].classList.toggle("show")
         })
     })
 })

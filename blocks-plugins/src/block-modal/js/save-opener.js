@@ -9,18 +9,15 @@
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
-export default function save( { attributes } ) {
-    const blockProps = useBlockProps.save();
-    return <div { ...blockProps }>
-		{ attributes.message }
+export default function SaveOpener( { attributes } ) {
+	console.log('save attributes')
+	console.log(attributes)
 
-		<div className="bod-block-popup-overlay"></div>
-			
-		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="bod-block-popup-wrap">
-			<div className='modalbody'>
-				{<InnerBlocks.Content/>}
+	return (
+		<div {...useBlockProps.save()}>
+			<div className='modalOpener' data-openModalBody={ attributes.openModalBody }>
+				<InnerBlocks.Content />
 			</div>
 		</div>
-	</div>;
-}
-
+	);
+};
