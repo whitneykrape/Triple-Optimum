@@ -24,9 +24,11 @@
 console.log('Hello World! (from create-block-gutenpride block)');
 /* eslint-enable no-console */
 
+console.log('Modal Loaded 0.001')
+
 window.addEventListener('load', listener = () => {
     let $arrayOfModelOpeners = document.querySelectorAll('.modalOpener');
-    let $arrayOfModelBodies  = document.querySelectorAll('.modalbody');
+    let $arrayOfModelBodies  = document.querySelectorAll('.modalBody');
 
     console.log('$arrayOfModelBodies')
     console.log($arrayOfModelBodies)

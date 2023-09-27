@@ -14,9 +14,9 @@ export default function SaveContent( { attributes } ) {
     return <div { ...blockProps }>
 		{ attributes.message }
 
-		<div className="bod-block-popup-overlay"></div>
+		<div className="block-popup-overlay"></div>
 			
-		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="bod-block-popup-wrap">
+		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="block-popup-wrap">
 			<div className='modalBody'>
 				{<InnerBlocks.Content/>}
 			</div>

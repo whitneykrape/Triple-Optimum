@@ -12,7 +12,7 @@ import { registerBlockType } from '@wordpress/blocks';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './css/block-tabbed-back-end.scss';
+import './css/block-tabbed-front-end.scss';
 
 /**
  * Internal dependencies
@@ -21,7 +21,8 @@ import EditContent from './js/edit-content';
 import SaveContent from './js/save-content';
 import EditNavigation from './js/edit-navigation';
 import SaveNavigation from './js/save-navigation';
-import metadata from './block.json';
+import metadataContent from './block.json';
+import metadataNavigation from './block-navigation.json';
 
 import { __ } from '@wordpress/i18n';
 
@@ -30,36 +31,32 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType(metadata.name, {
+registerBlockType(metadataContent.name, {
+	title: __( metadataContent.title, 'stitch-tab' ), // Block title.
+	attributes: metadataContent.attributes,
 	/**
-	 * @see ./js/edit.js
+	 * @see ./js/edit-content.js
 	 */
 	edit: EditContent,
 
 	/**
-	 * @see ./js/save.js
+	 * @see ./js/save-content.js
 	 */
 	save: SaveContent,
 });
 
-const blockAttributes = {
-	tabNavigationIdentifier: {
-		type: "string",
-		default: "Select an Option"
-	}
-}
-
 // Move this out when more developed
-registerBlockType("stitchedblocks/block-tabbed-navigation", {
-	title: __( 'Tab Navigation', 'stitch-tab' ), // Block title.
-	attributes: blockAttributes,
+registerBlockType(metadataNavigation.name, {
+	title: __( metadataNavigation.title, 'stitch-tab' ), // Block title.
+	attributes: metadataNavigation.attributes,
+	icon: metadataNavigation.icon,
 	/**
-	 * @see ./js/edit.js
+	 * @see ./js/edit-navigation.js
 	 */
 	edit: EditNavigation,
 
 	/**
-	 * @see ./js/save.js
+	 * @see ./js/save-navigation.js
 	 */
 	save: SaveNavigation,
 });

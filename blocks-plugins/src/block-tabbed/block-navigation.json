@@ -1,31 +1,21 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "stitchedblocks/block-tabbed-content",
+	"name": "stitchedblocks/block-tabbed-navigation",
 	"version": "0.1.0",
-	"title": "Tab Content",
+	"title": "Tab Navigation",
 	"category": "widgets",
-	"icon": "slides",
+	"icon": "ellipsis",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
 		"html": false
 	},
 	"attributes": {
-		"message": {
-			"type": "string",
-			"source": "text",
-			"selector": "div",
-			"default": ""
-		},
-		"columns": { 
-			"type": "number", 
-			"default": 3 
-		},
-		"controlledBy": {
-			"type": "string",
-			"default": "Select an Option"
-		}
+        "tabNavigationIdentifier": {
+            "type": "string",
+            "default": "Select an Option"
+        }
 	},
 	"textdomain": "gutenpride",
 	"editorScript": "file:./index.js",

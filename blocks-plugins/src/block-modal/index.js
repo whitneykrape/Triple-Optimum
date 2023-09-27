@@ -12,7 +12,7 @@ import { registerBlockType } from '@wordpress/blocks';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './css/block-modal-back-end.scss';
+import './css/block-modal-front-end.scss';
 
 /**
  * Internal dependencies
@@ -21,7 +21,8 @@ import EditContent from './js/edit-content';
 import SaveContent from './js/save-content';
 import EditOpener from './js/edit-opener';
 import SaveOpener from './js/save-opener';
-import metadata from './block.json';
+import metadataContent from './block.json';
+import metadataOpener from './block-opener.json';
 
 
 import { __ } from '@wordpress/i18n';
@@ -31,36 +32,32 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType(metadata.name, {
+registerBlockType(metadataContent.name, {
+	title: __( metadataContent.title, 'stitch-tab' ), // Block title.
+	attributes: metadataContent.attributes,
 	/**
-	 * @see ./js/edit.js
+	 * @see ./js/edit-content.js
 	 */
 	edit: EditContent,
 
 	/**
-	 * @see ./js/save.js
+	 * @see ./js/save-content.js
 	 */
 	save: SaveContent,
 });
 
-const blockAttributes = {
-	openModalBody: {
-		type: "string",
-		default: "Select an Option"
-	}
-}
-
 // Move this out when more developed
-registerBlockType("stitchedblocks/block-modal-opener", {
-	title: __( 'Modal Opener', 'stitch-tab' ), // Block title.
-	attributes: blockAttributes,
+registerBlockType(metadataOpener.name, {
+	title: __( metadataOpener.title, 'stitch-tab' ), // Block title.
+	attributes: metadataOpener.attributes,
+	icon: metadataOpener.icon,
 	/**
-	 * @see ./js/edit.js
+	 * @see ./js/edit-opener.js
 	 */
 	edit: EditOpener,
 
 	/**
-	 * @see ./js/save.js
+	 * @see ./js/save-opener.js
 	 */
 	save: SaveOpener,
 });

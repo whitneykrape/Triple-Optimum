@@ -13,13 +13,9 @@ export default function SaveContent( { attributes } ) {
     const blockProps = useBlockProps.save();
     return <div { ...blockProps }>
 		{ attributes.message }
-
-		<div className="bod-block-popup-overlay"></div>
 			
-		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="bod-block-popup-wrap">
-			<div className='modalbody'>
-				{<InnerBlocks.Content/>}
-			</div>
+		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="sttb-tabbed-content">
+			{<InnerBlocks.Content/>}
 		</div>
 	</div>;
 }

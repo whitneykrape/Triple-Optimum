@@ -8,32 +8,3 @@
 .wp-block-create-block-gutenpride {
     font-size: 64px;
 }
-
-.modalbody {
-    display: none;
-}
-
-.modalbody.show {
-    display: block
-}
-
-.bod-block-popup-overlay,
-.bod-block-popup-wrap {
-  position: fixed;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-.bod-block-popup-overlay {
-  z-index: 10001;
-  height: 100%;
-  -webkit-transition: opacity 0.3s;
-  transition: opacity 0.3s;
-  opacity: 0;
-  
-  &.active {
-    opacity: 1;
-  }
-}
