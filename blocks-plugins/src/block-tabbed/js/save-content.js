@@ -14,7 +14,7 @@ export default function SaveContent( { attributes } ) {
     return <div { ...blockProps }>
 		{ attributes.message }
 			
-		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="sttb-tabbed-content">
+		<div className="sttb-tabbed-content" data-tabNavigationIdentifierController={ attributes.controlledBy } role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" >
 			{<InnerBlocks.Content/>}
 		</div>
 	</div>;

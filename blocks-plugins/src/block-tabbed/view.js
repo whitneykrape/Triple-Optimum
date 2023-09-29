@@ -24,7 +24,7 @@
 console.log('Hello World! (from create-block-gutenpride block)');
 /* eslint-enable no-console */
 
-layoutSliders = (sliders) => { 
+layoutSlidersOld = (sliders) => { 
     let slidersStatus = {}
 
     if (sliders.length) {
@@ -170,13 +170,142 @@ layoutSliders = (sliders) => {
     } // If sliders
 }
 
+
+
+    // setSlide.forEach((slideButton, index) => {
+    //     if (index === 0) slideButton.classList.add('currentSlide'); // console.log('slideButton')
+// 
+    //     // Universal event that says...
+    //     // Don't think this is quite universal yet.
+    //     // I get a single item (so if it's a list this is applied in a map)
+    //     // And add a listener to that item
+    //     // So, if these have accurate data- added to them, the event can pull in the object
+    //     // And the current slide which is 0 and held by the main tab list (so it's absolute)
+    //     // All it does is tell how that current should be modified
+    //     // If it's next or prev it gets plus or minus
+    //     // If it's a number it's absolute
+    //     // The helpers around it resets then moves things
+    //     // Most of this is true already, just needs some cleanup (better naming, clearer code)
+    //     slideButton.addEventListener("click", function (e) {
+    //         // Get the larger sliders HTML. 
+    //         setSlide = sliders[sliderIndex].querySelectorAll(".block_gallery-button-setslide");
+    //         // Clear out "currentSlide" just in case.
+    //         setSlide.forEach((slideButton, index) => {
+    //             slideButton.classList.remove('currentSlide'); // console.log('slideButton.classList')
+    //         });
+    //         // Set the current one now...
+    //         slideButton.classList.add('currentSlide');
+    //         // This gets a number for what the slide should be, change to a data number
+    //         slideButtonNumber = slideButton.innerHTML // console.log('sliderIndex')
+    //         // Make sure the number is, ya know, a number
+    //         slidersStatus[sliderIndex]['curSlide'] = parseInt(slideButtonNumber); //   move slide by -100%
+// 
+// 
+    //         Array.from(sliders[sliderIndex].children[0].children).forEach((slide, index) => {
+    //             slide.className = "wp-container-69 wp-block-column";
+    //             slide.classList.add("transform" + (index - slideButtonNumber).toString()); // slide.style.transform = `translateX(${100 * (index - slidersStatus[sliderIndex]['curSlide'])}%)`
+    //         });
+    //     })
+    // })
+
+
+tabbedNavigationClick = (clickElement) => {
+    clickElement.addEventListener("click", function (e) {
+        // Get the larger sliders HTML. 
+        identifierEvent = clickElement.dataset.tabnavigationidentifier
+        document.querySelectorAll('.wp-block-stitchedblocks-block-tabbed-content').remove('currentSlide')
+        // // Clear out "currentSlide" just in case.
+        // identifierEvents.forEach((slideButton, index) => {
+        //     slideButton.classList.remove('currentSlide'); // console.log('slideButton.classList')
+        // });
+        // // Set the current one now...
+        // slideButton.classList.add('currentSlide');
+        // // This gets a number for what the slide should be, change to a data number
+        // slideButtonNumber = slideButton.innerHTML // console.log('sliderIndex')
+        // // Make sure the number is, ya know, a number
+        // slidersStatus[sliderIndex]['curSlide'] = parseInt(slideButtonNumber); //   move slide by -100%
+        // //
+        // Array.from(sliders[sliderIndex].children[0].children).forEach((slide, index) => {
+        //         slide.className = "wp-container-69 wp-block-column";
+        //         slide.classList.add("transform" + (index - slideButtonNumber).toString()); // slide.style.transform = `translateX(${100 * (index - slidersStatus[sliderIndex]['curSlide'])}%)`
+        // });
+    })
+}
+
+
+        
+layoutSlidersNavigation = (slider) => {
+    console.log('slider')
+    console.log(slider)
+
+    console.log('slider')
+    console.log(slider.dataset.tabnavigationidentifier)
+
+    tabsHolder = document.querySelector('[data-tabnavigationidentifier="' + slider.dataset.tabnavigationidentifier + '"]')
+    controlMarkersList = document.querySelectorAll('[data-tabnavigationidentifiercontroller="' + slider.dataset.tabnavigationidentifier + '"]')
+
+    console.log('controlMarkersList')
+    console.log(controlMarkersList)
+
+    // Pull into function that builds
+    // It is okay to have many a function
+    addControlMarkers = '<ul class="controlMarkers">'
+    controlMarkersList.forEach((marker, markerIndex) => {
+        console.log('markerIndex')
+        console.log(markerIndex)
+
+        addControlMarkers += '<li class="block_gallery-button-setslide">' + markerIndex + '</li>'
+    });
+    addControlMarkers += '</ul>'
+
+    console.log('addControlMarkers')
+    console.log(addControlMarkers)
+
+    return addControlMarkers
+}
+
 window.addEventListener('load', listener = () => {
-    const sliders = document.querySelectorAll(".sttb-tabbed-content");
+    document.querySelectorAll('.wp-block-stitchedblocks-block-tabbed-content').forEach(all => all.classList.remove('currentSlide'))
 
-    console.log('sliders')
-    console.log(sliders)
+    // Overarching navigation element, should be unique, get from data
+    // Starting slide
+    // Make an object to contain everything
+    // Set up each and every slider
+    // IN WORDPRESS, HAVE AN AUTOMATIC NAMING SCHEME
+    
+    // THESE NEED THE NAMES THEY ARE ASSOCIATED TO
+    // So do I iterate over content or navigation?
+    // Over the content, then you go back to? The main nav item? 
+    // Over the navigation, build up the object, then get the nav items iterated as needed
+    const tabbedElements = document.querySelectorAll(".sttb-tabbed-content")
+    const tabNavigationElements = document.querySelectorAll(".tabNavProperties")
+    let   allTabbed = {}
 
-    layoutSliders(sliders)
+    console.log('tabbedElements')
+    console.log(tabbedElements)
+
+    tabNavigationElements.forEach((element, elementIndex) => {
+        tabbedId = element.dataset.tabnavigationidentifier
+        
+        console.log('tabbedId')
+        console.log(tabbedId)
+
+        allTabbed[tabbedId] = {}
+
+        controlMarkers = layoutSlidersNavigation(element)
+
+        document.querySelector('[data-tabnavigationidentifier="' + tabbedId + '"]').insertAdjacentHTML('afterend', controlMarkers)
+    })
+    
+
+
+
+    console.log('allTabbed')
+    console.log(allTabbed)
+
+    // Create Prev, Next
+
+    // Add events to each.
 })
 
-console.log('Tabbed Loaded 0.001')
+console.log('Tabbed Loaded 0.002')
