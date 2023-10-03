@@ -21,10 +21,9 @@
  */
 
 /* eslint-disable no-console */
-console.log('Hello World! (from create-block-gutenpride block)');
 /* eslint-enable no-console */
 
-console.log('Modal Loaded 0.001')
+console.log('Modal Loaded 0.002')
 
 window.addEventListener('load', listener = () => {
     let $arrayOfModelOpeners = document.querySelectorAll('.modalOpener');

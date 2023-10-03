@@ -21,8 +21,9 @@
  */
 
 /* eslint-disable no-console */
-console.log('Hello World! (from create-block-gutenpride block)');
 /* eslint-enable no-console */
+
+console.log('Tabbed Loaded 0.003')
 
 layoutSlidersOld = (sliders) => { 
     let slidersStatus = {}
@@ -307,5 +308,3 @@ window.addEventListener('load', listener = () => {
 
     // Add events to each.
 })
-
-console.log('Tabbed Loaded 0.002')
