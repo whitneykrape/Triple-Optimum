@@ -215,7 +215,12 @@ tabbedNavigationClick = (clickElement) => {
         // Get the larger sliders HTML. 
         identifierEvent = clickElement.dataset.tabnavigationidentifier
         document.querySelectorAll('.wp-block-stitchedblocks-block-tabbed-content').remove('currentSlide')
-        // // Clear out "currentSlide" just in case.
+        // Clear out "currentSlide" just in case.
+        
+        
+        // Most of the below is useful? Try out in raw.
+
+
         // identifierEvents.forEach((slideButton, index) => {
         //     slideButton.classList.remove('currentSlide'); // console.log('slideButton.classList')
         // });
@@ -294,6 +299,14 @@ window.addEventListener('load', listener = () => {
         allTabbed[tabbedId] = {}
 
         controlMarkers = layoutSlidersNavigation(element)
+        // layoutLeftRightButtons
+        // 
+
+
+        // if enabled
+        //   layoutLeftRightButtons
+
+        // if enabled
 
         document.querySelector('[data-tabnavigationidentifier="' + tabbedId + '"]').insertAdjacentHTML('afterend', controlMarkers)
     })
