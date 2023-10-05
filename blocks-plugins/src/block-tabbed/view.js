@@ -25,6 +25,7 @@
 
 console.log('Tabbed Loaded 0.003')
 
+/*
 layoutSlidersOld = (sliders) => { 
     let slidersStatus = {}
 
@@ -208,18 +209,22 @@ layoutSlidersOld = (sliders) => {
     //         });
     //     })
     // })
+*/
 
-
-tabbedNavigationClick = (clickElement) => {
+tabbedNavigationClick = (clickElement, tabbedArray) => {
     clickElement.addEventListener("click", function (e) {
+        console.log('e')
+        console.log(e)
         // Get the larger sliders HTML. 
         identifierEvent = clickElement.dataset.tabnavigationidentifier
-        document.querySelectorAll('.wp-block-stitchedblocks-block-tabbed-content').remove('currentSlide')
+        document.querySelectorAll('.wp-block-stitchedblocks-block-tabbed-content').map().classList.remove('currentSlide')
         // Clear out "currentSlide" just in case.
         
-        
         // Most of the below is useful? Try out in raw.
-
+        Array.from(tabbedArray).forEach((slide, index) => {
+                slide.classList.add("transform" + (index - slideButtonNumber).toString());
+                slide.style.transform = `translateX(${100 * (index - slidersStatus[sliderIndex]['curSlide'])}%)`
+        })
 
         // identifierEvents.forEach((slideButton, index) => {
         //     slideButton.classList.remove('currentSlide'); // console.log('slideButton.classList')
@@ -286,6 +291,7 @@ window.addEventListener('load', listener = () => {
     const tabbedElements = document.querySelectorAll(".sttb-tabbed-content")
     const tabNavigationElements = document.querySelectorAll(".tabNavProperties")
     let   allTabbed = {}
+    let   clickableNavigationElements
 
     console.log('tabbedElements')
     console.log(tabbedElements)
@@ -299,8 +305,18 @@ window.addEventListener('load', listener = () => {
         allTabbed[tabbedId] = {}
 
         controlMarkers = layoutSlidersNavigation(element)
+        document.querySelector('[data-tabnavigationidentifier="' + tabbedId + '"]').insertAdjacentHTML('afterend', controlMarkers)
+
+        controlMarkers = document.querySelectorAll(".block_gallery-button-setslide")
+        clickableNavigationElements = document.querySelectorAll(".block_gallery-button-setslide")
+        console.log('clickableNavigationElements')
+        console.log(clickableNavigationElements)
+        clickableNavigationElements.forEach((element) => {
+            tabbedNavigationClick(element, controlMarkers)
+        })
+
         // layoutLeftRightButtons
-        // 
+        // eventAddClickable
 
 
         // if enabled
@@ -308,7 +324,9 @@ window.addEventListener('load', listener = () => {
 
         // if enabled
 
-        document.querySelector('[data-tabnavigationidentifier="' + tabbedId + '"]').insertAdjacentHTML('afterend', controlMarkers)
+
+
+
     })
     
 
