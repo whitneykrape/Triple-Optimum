@@ -211,19 +211,37 @@ layoutSlidersOld = (sliders) => {
     // })
 */
 
-tabbedNavigationClick = (clickElement, tabbedArray) => {
+let   allTabbedControllers = {}
+
+tabbedNavigationClick = (tabbedId, clickElement, tabbedArray) => {
     clickElement.addEventListener("click", function (e) {
         console.log('e')
         console.log(e)
         // Get the larger sliders HTML. 
         identifierEvent = clickElement.dataset.tabnavigationidentifier
-        document.querySelectorAll('.wp-block-stitchedblocks-block-tabbed-content').map().classList.remove('currentSlide')
+        allElementsToMove = document.querySelectorAll('[data-tabnavigationidentifiercontroller="' + tabbedId + '"]')
+        currentIndex = allTabbedControllers[tabbedId]['currentIndex']
+
+        console.log('allElementsToMove')
+        console.log(allElementsToMove)
+        allElementsToMove.forEach((element) => { element.classList.remove('currentSlide') })
+
         // Clear out "currentSlide" just in case.
         
         // Most of the below is useful? Try out in raw.
-        Array.from(tabbedArray).forEach((slide, index) => {
-                slide.classList.add("transform" + (index - slideButtonNumber).toString());
-                slide.style.transform = `translateX(${100 * (index - slidersStatus[sliderIndex]['curSlide'])}%)`
+        tabbedArray.forEach((slide, index) => {
+            slideButtonNumber = clickElement.innerHTML
+            newIndex          = index
+            newIndexTranslate = index - slideButtonNumber
+            // Right needs to be based on the button clicked. Oie.
+
+            console.log('slideButtonNumber')
+            console.log(slideButtonNumber)
+            // Reset className
+            // slide.className = "wp-container-69 wp-block-column"
+            slide.classList.add("transform" + (newIndexTranslate).toString());
+            slide.style.transform = `translateX(${100 * (newIndexTranslate)}%)`
+            allTabbedControllers[tabbedId]['currentIndex'] = slideButtonNumber
         })
 
         // identifierEvents.forEach((slideButton, index) => {
@@ -238,7 +256,8 @@ tabbedNavigationClick = (clickElement, tabbedArray) => {
         // //
         // Array.from(sliders[sliderIndex].children[0].children).forEach((slide, index) => {
         //         slide.className = "wp-container-69 wp-block-column";
-        //         slide.classList.add("transform" + (index - slideButtonNumber).toString()); // slide.style.transform = `translateX(${100 * (index - slidersStatus[sliderIndex]['curSlide'])}%)`
+        //         slide.classList.add("transform" + (index - slideButtonNumber).toString()); 
+        //         slide.style.transform = `translateX(${100 * (index - slidersStatus[sliderIndex]['curSlide'])}%)`
         // });
     })
 }
@@ -288,34 +307,39 @@ window.addEventListener('load', listener = () => {
     // So do I iterate over content or navigation?
     // Over the content, then you go back to? The main nav item? 
     // Over the navigation, build up the object, then get the nav items iterated as needed
-    const tabbedElements = document.querySelectorAll(".sttb-tabbed-content")
     const tabNavigationElements = document.querySelectorAll(".tabNavProperties")
-    let   allTabbed = {}
-    let   clickableNavigationElements
+    let   clickableNavigationElements, tabbedElements
 
     console.log('tabbedElements')
     console.log(tabbedElements)
 
+    // The number of clickable elements needs to be based on children
+
     tabNavigationElements.forEach((element, elementIndex) => {
         tabbedId = element.dataset.tabnavigationidentifier
+        tabbedElements = element.querySelectorAll('[data-tabnavigationidentifiercontroller="' + tabbedId + '"]')
         
         console.log('tabbedId')
         console.log(tabbedId)
 
-        allTabbed[tabbedId] = {}
+        allTabbedControllers[tabbedId] = {}
+        allTabbedControllers[tabbedId]['currentIndex'] = 0
+
+        console.log('allTabbedControllers')
+        console.log(allTabbedControllers)
 
         controlMarkers = layoutSlidersNavigation(element)
         document.querySelector('[data-tabnavigationidentifier="' + tabbedId + '"]').insertAdjacentHTML('afterend', controlMarkers)
+        controlMarkers = document.querySelectorAll('[data-tabnavigationidentifiercontroller="' + tabbedId + '"]')
+        // layoutLeftRightButtons
 
-        controlMarkers = document.querySelectorAll(".block_gallery-button-setslide")
         clickableNavigationElements = document.querySelectorAll(".block_gallery-button-setslide")
         console.log('clickableNavigationElements')
         console.log(clickableNavigationElements)
         clickableNavigationElements.forEach((element) => {
-            tabbedNavigationClick(element, controlMarkers)
+            tabbedNavigationClick(tabbedId, element, controlMarkers)
         })
 
-        // layoutLeftRightButtons
         // eventAddClickable
 
 
@@ -329,11 +353,6 @@ window.addEventListener('load', listener = () => {
 
     })
     
-
-
-
-    console.log('allTabbed')
-    console.log(allTabbed)
 
     // Create Prev, Next
 
