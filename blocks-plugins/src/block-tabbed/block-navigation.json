@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "stitchedblocks/block-tabbed-navigation",
 	"version": "0.1.0",
-	"title": "Tab Navigation",
+	"title": "Tabbed Navigation Block",
 	"category": "widgets",
 	"icon": "ellipsis",
 	"description": "Example block scaffolded with Create Block tool.",
@@ -12,12 +12,11 @@
 		"html": false
 	},
 	"attributes": {
-        "tabNavigationIdentifier": {
-            "type": "string",
-            "default": "Select an Option"
+        "sttb1__tabbednavid": {
+            "type": "string"
         }
 	},
-	"textdomain": "gutenpride",
+	"textdomain": "tabbednavigator",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./css/block-tabbed-back-end.css",
 	"style": "file:./css/block-tabbed-front-end.css",

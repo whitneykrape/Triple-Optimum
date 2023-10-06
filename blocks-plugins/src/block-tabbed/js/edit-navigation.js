@@ -4,34 +4,27 @@ import { SelectControl, PanelBody, Placeholder, TextControl } from '@wordpress/c
 import '../css/block-tabbed-back-end.scss';
 
 export default function EditNavigation( { attributes, setAttributes, isSelected, clientId } ) {
-	// This needs to set a name, then all content tabs have th option of which control they fall under. 
-	// This counts up all the ones that are associated and creates the navigation framework around that
-
-
-
-	// console.log(listModalBodies())
-
 	return (
 		<div {...useBlockProps()}>
 			<Placeholder
-				label={ __( 'Tab Controller', 'gutenpride' ) }
-				instructions={ __( 'First element triggers modal body.', 'gutenpride' ) }
-				className={ __( 'tabbednavigation', 'tabNavigationIdentifier', attributes.tabcontrolIdentifier ) }
+				label={ __( 'Tabbed Navigator', 'tabbednavigator' ) }
+				instructions={ __( 'First element triggers modal body.', 'tabbednavigator' ) }
+				className={ __( 'tabbednavigation', 'sttb1__tabbednavid', attributes.sttb1__tabbednavid ) }
 			>
-				<div className='tabNavProperties' data-tabNavigationIdentifier={ attributes.tabNavigationIdentifier }>
+				<div className='sttb1__tabbedNavigator' data-sttb1__tabbednavid={ attributes.sttb1__tabbednavid }>
 					<InnerBlocks/>
 				</div>
 
 				<InspectorControls>
 						<PanelBody
-							title={__('Properties','bod-modal')}
+							title={__('Properties','tabbednavigator')}
 							initialOpen={false}
-							className="bod-form"
+							className="sttb1__form"
 						>
 							<PlainText
-								onChange={ content => setAttributes({ tabNavigationIdentifier: content }) }
-								value={ attributes.tabNavigationIdentifier }
-								placeholder={__('Name these Controls for Tabs to Link to','bod-modal')}
+								onChange={ content => setAttributes({ sttb1__tabbednavid: content }) }
+								value={ attributes.sttb1__tabbednavid }
+								placeholder={__('Name these Controls for Tabs to Link to','tabbednavigator')}
 							/>
 
 						</PanelBody>

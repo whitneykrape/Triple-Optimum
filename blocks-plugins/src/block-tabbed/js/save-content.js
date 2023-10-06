@@ -11,12 +11,13 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function SaveContent( { attributes } ) {
     const blockProps = useBlockProps.save();
-    return <div { ...blockProps }>
-		{ attributes.message }
-			
-		<div className="sttb-tabbed-content" data-tabNavigationIdentifierController={ attributes.controlledBy } role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" >
+    return (
+	// <div { ...blockProps }>
+		// { attributes.message }
+		<div className="sttb1__tabbedContent" data-sttb1__tabbedlink={ attributes.sttb1__tabbedlink } role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" >
 			{<InnerBlocks.Content/>}
 		</div>
-	</div>;
+	//</div>
+	);
 }
 

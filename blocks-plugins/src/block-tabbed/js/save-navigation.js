@@ -10,14 +10,11 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function SaveNavigation( { attributes } ) {
-	console.log('save attributes')
-	console.log(attributes)
-
 	return (
-		<div {...useBlockProps.save()}>
-			<div className='tabNavProperties' data-tabNavigationIdentifier={ attributes.tabNavigationIdentifier }>
+		// <div {...useBlockProps.save()}>
+			<div className='sttb1__tabbedNavigator' data-sttb1__tabbednavid={ attributes.sttb1__tabbednavid }>
 				<InnerBlocks.Content />
 			</div>
-		</div>
+		// </div>
 	);
 }

@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "stitchedblocks/block-tabbed-content",
 	"version": "0.1.0",
-	"title": "Tab Content",
+	"title": "Tabbed Content Block",
 	"category": "widgets",
 	"icon": "slides",
 	"description": "Example block scaffolded with Create Block tool.",
@@ -22,12 +22,12 @@
 			"type": "number", 
 			"default": 3 
 		},
-		"controlledBy": {
+		"sttb1__tabbedlink": {
 			"type": "string",
 			"default": "Select an Option"
 		}
 	},
-	"textdomain": "gutenpride",
+	"textdomain": "tabbedcontent",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./css/block-tabbed-back-end.css",
 	"style": "file:./css/block-tabbed-front-end.css",
