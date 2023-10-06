@@ -214,9 +214,9 @@ layoutSlidersOld = (sliders) => {
 let   allTabbedControllers = {}
 
 tabbedNavigationClick = (tabbedId, clickElement, tabbedArray) => {
-    clickElement.addEventListener("click", function (e) {
-        console.log('e')
-        console.log(e)
+    clickElement.addEventListener("click", function (event) {
+        console.log('event')
+        console.log(event)
         // Get the larger sliders HTML. 
         identifierEvent = clickElement.dataset.tabnavigationidentifier
         allElementsToMove = document.querySelectorAll('[data-tabnavigationidentifiercontroller="' + tabbedId + '"]')
