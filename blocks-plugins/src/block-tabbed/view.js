@@ -213,36 +213,51 @@ layoutSlidersOld = (sliders) => {
 
 let   allTabbedControllers = {}
 
+horizontalSlideMovement = (tabbedId, clickValue, tabbedArray) => {
+    console.log('horizontalSlideMovement')
+    console.log(tabbedId)
+    console.log(clickValue)
+    console.log(tabbedArray)
+
+    tabbedArray.forEach((slide, index) => {
+        slideButtonNumber = clickValue
+        newIndex          = index
+        newIndexTranslate = index - slideButtonNumber
+        // Right needs to be based on the button clicked. Oie.
+
+        console.log('slideButtonNumber')
+        console.log(slideButtonNumber)
+        // Reset className
+        // slide.className = "wp-container-69 wp-block-column"
+        slide.classList.add("transform" + (newIndexTranslate).toString());
+        slide.style.transform = `translateX(${100 * (newIndexTranslate)}%)`
+        allTabbedControllers[tabbedId]['currentIndex'] = slideButtonNumber
+    })
+}
+
 tabbedNavigationClick = (tabbedId, clickElement, tabbedArray) => {
     clickElement.addEventListener("click", function (event) {
         console.log('event')
         console.log(event)
         // Get the larger sliders HTML. 
+        // THIS IS NOT LIMITING ITSSELF ENOUGH
+        // ITS MOVING ALL TABBED ITEMS NOT JUST ITS OWN
         identifierEvent = clickElement.dataset.tabnavigationidentifier
         allElementsToMove = document.querySelectorAll('[data-tabnavigationidentifiercontroller="' + tabbedId + '"]')
         currentIndex = allTabbedControllers[tabbedId]['currentIndex']
 
         console.log('allElementsToMove')
         console.log(allElementsToMove)
+
+        // For styling
         allElementsToMove.forEach((element) => { element.classList.remove('currentSlide') })
 
         // Clear out "currentSlide" just in case.
         
         // Most of the below is useful? Try out in raw.
-        tabbedArray.forEach((slide, index) => {
-            slideButtonNumber = clickElement.innerHTML
-            newIndex          = index
-            newIndexTranslate = index - slideButtonNumber
-            // Right needs to be based on the button clicked. Oie.
+        clickValue = clickElement.innerHTML
+        horizontalSlideMovement(tabbedId, clickValue, tabbedArray)
 
-            console.log('slideButtonNumber')
-            console.log(slideButtonNumber)
-            // Reset className
-            // slide.className = "wp-container-69 wp-block-column"
-            slide.classList.add("transform" + (newIndexTranslate).toString());
-            slide.style.transform = `translateX(${100 * (newIndexTranslate)}%)`
-            allTabbedControllers[tabbedId]['currentIndex'] = slideButtonNumber
-        })
 
         // identifierEvents.forEach((slideButton, index) => {
         //     slideButton.classList.remove('currentSlide'); // console.log('slideButton.classList')
@@ -324,6 +339,7 @@ window.addEventListener('load', listener = () => {
 
         allTabbedControllers[tabbedId] = {}
         allTabbedControllers[tabbedId]['currentIndex'] = 0
+        
 
         console.log('allTabbedControllers')
         console.log(allTabbedControllers)
@@ -336,6 +352,9 @@ window.addEventListener('load', listener = () => {
         clickableNavigationElements = document.querySelectorAll(".block_gallery-button-setslide")
         console.log('clickableNavigationElements')
         console.log(clickableNavigationElements)
+
+        clickValue = 0
+        horizontalSlideMovement(tabbedId, clickValue, controlMarkers)
         clickableNavigationElements.forEach((element) => {
             tabbedNavigationClick(tabbedId, element, controlMarkers)
         })
