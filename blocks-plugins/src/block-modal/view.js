@@ -26,25 +26,30 @@
 console.log('Modal Loaded 0.002')
 
 window.addEventListener('load', listener = () => {
-    let $arrayOfModelOpeners = document.querySelectorAll('.modalOpener');
-    let $arrayOfModelBodies  = document.querySelectorAll('.modalBody');
+    // Roadmap, swap out classes for data. Makes 
+    let arrayOfModelOpeners = document.querySelectorAll('.modalOpener');
+    let arrayOfModelBodies  = document.querySelectorAll('.modalBody');
 
-    console.log('$arrayOfModelBodies')
-    console.log($arrayOfModelBodies)
+    console.log('arrayOfModelBodies')
+    console.log(arrayOfModelBodies)
 
-    $arrayOfModelOpeners.forEach((slide, index) => {
+    // Iterate through the Controllers as assocate them.
+    arrayOfModelOpeners.forEach((slide, index) => {
         console.log(slide)
         console.log(index)
 
-        $referenceToModalBody = slide.dataset.openmodalbody;
+        // Get the dataset from the frontend. 
+        referenceToModalBody = slide.dataset.sttb1__modalid;
 
-        console.log('$referenceToModalBody')
-        console.log($referenceToModalBody)
+        console.log('referenceToModalBody')
+        console.log(referenceToModalBody)
 
+        // Set up the clicks.
+        // Roadmap, pull this out. 
         slide.addEventListener("click", clickShowModalBodyEvent = (e) => {
             console.log(e)
 
-            $arrayOfModelBodies[$referenceToModalBody].classList.toggle("show")
+            arrayOfModelBodies[referenceToModalBody].classList.toggle("show")
         })
     })
 })

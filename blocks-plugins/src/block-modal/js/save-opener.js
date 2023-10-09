@@ -9,6 +9,9 @@
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
+import '../css/block-modal-back-end.scss';
+import '../css/block-modal-front-end.scss';
+
 export default function SaveOpener( { attributes } ) {
 	console.log('save attributes')
 	console.log(attributes)

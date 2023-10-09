@@ -12,23 +12,87 @@ import { SelectControl, PanelBody, Placeholder, TextControl } from '@wordpress/c
 import '../css/block-tabbed-back-end.scss';
 
 export default function EditContent( { attributes, setAttributes, isSelected, clientId } ) {
+	let tabbedNavigationBlocks = {} 
 
-	const listTabbedNavigation = () => {
-		// Get all the options from potential Navigation Blocks
-		let arrayOfTabbedNavigation = document.querySelectorAll('.sttb1__tabbedNavigator')
-		// Make a nice array
-		arrayOfTabbedNavigation = Array.from(arrayOfTabbedNavigation)
-		// Set this out for a dropdown
-		arrayOfTabbedNavigation = arrayOfTabbedNavigation.map(
+
+
+	// List out the potential elements, children of parents, that can be clickable.
+	const listTabbedSubElements = () => {
+		// Variables, defines scope and allows testing.
+		let arrayOfElements, arrayOfSubElements, sttb1__tabbednavid
+
+		// Get all the parental elements to start from. 
+		arrayOfElements = document.querySelectorAll('.sttb1__tabbedNavigator')
+
+		// Arrange an array and iterate.
+		arrayOfElements = Array.from(arrayOfElements)
+		arrayOfElements.map(
 			(element, elementIndex) => {
-				// Important, this needs to have the same dataset property from it's associated plugin
-				return element.dataset.sttb1__tabbednavid
+				// Get the parent id to use for assigning the Global object.
+				sttb1__tabbednavid = element.dataset.sttb1__tabbednavid
+
+				// For each of the parents, get images and list items. Can be expanded later.
+				arrayOfSubElements = element.querySelectorAll('img,li')
+
+				// Arrange an array and iterate.
+				arrayOfSubElements = Array.from(arrayOfSubElements)
+				arrayOfSubElements = arrayOfSubElements.map(
+					(subElement, subElementIndex) => {
+						// Get each element's index, split it, and send it out. 
+						return subElement.tagName.toLowerCase() + '#' + subElementIndex
+					}
+				)
+
+				// If there is a parent element to work with add they to the Global object to use later.
+				if (tabbedNavigationBlocks.hasOwnProperty(sttb1__tabbednavid))
+					tabbedNavigationBlocks[sttb1__tabbednavid]['arrayOfSubElements'] = arrayOfSubElements
 			}
 		)
-		// Add a Default Option (so nothing auto sets)
-		arrayOfTabbedNavigation.unshift('Select an Option');
+	}
+
+	const listTabbedNavigation = () => {
+		// Set up variables, defines scope and testing.
+		let arrayOfTabbedNavigation, sttb1__tabbednavid
+		
+		// Get all the options from potential Navigation Blocks.
+		arrayOfTabbedNavigation = document.querySelectorAll('.sttb1__tabbedNavigator')
+
+		// Arrange an array and iterate.
+		arrayOfTabbedNavigation = Array.from(arrayOfTabbedNavigation)
+		arrayOfTabbedNavigation = arrayOfTabbedNavigation.map(
+			(element, elementIndex) => {
+				// Get the parent id to use for assigning the Global object.
+				sttb1__tabbednavid = element.dataset.sttb1__tabbednavid
+
+				// Add it to the Global list.
+				tabbedNavigationBlocks[sttb1__tabbednavid] = {}
+				
+				// Pull together SubElements into the Global object.
+				listTabbedSubElements()
+
+				// Important, this needs to have the same dataset property from it's associated plugin.
+				return sttb1__tabbednavid
+			}
+		)
+		// Add a Default Option (so nothing auto sets.)
+		arrayOfTabbedNavigation.unshift('Select an Option')
+
 		// Done!
 		return arrayOfTabbedNavigation
+	}
+
+	const listTabbedNavigationElements = (sttb1__tabbedlink) => {
+		// Get all the options from potential Navigation Blocks.
+		let arrayOfSubElements
+		
+		if (tabbedNavigationBlocks.hasOwnProperty(sttb1__tabbedlink))
+			arrayOfSubElements = tabbedNavigationBlocks[sttb1__tabbedlink]['arrayOfSubElements']
+
+		if (arrayOfSubElements) {
+			return arrayOfSubElements
+		} else {
+			return ['empty']
+		}
 	}
 	
 	
@@ -51,9 +115,8 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
 								{ listTabbedNavigation().length > 1 ?
 									<SelectControl
 										label={__('Navigation to Use','tabbedcontent')}
-										// This gets output to the frontend
 										value={ attributes.sttb1__tabbedlink }
-										// From the function above layout the potential options
+										// Layout the options.
 										options= {
 											listTabbedNavigation().map(
 												(bodyName) => {
@@ -61,11 +124,30 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
 												}
 											)
 										}
-										// When the option is changed set the datasrc 
+										// When the option is changed set the datasrc.
 										onChange={ content => setAttributes({ sttb1__tabbedlink: content }) }
 									/>
 								:
-									<span>No Tabbed Navigation for Control!</span>
+									<span>No Navigation for Control!</span>
+								}
+
+								{ attributes.sttb1__tabbedlink ?
+									<SelectControl
+										label={__('Navigation Sub-Element to Use','tabbedcontent')}
+										value={ attributes.sttb1__tabbedlinksubelement }
+										// Layout the options.
+										options= {
+											listTabbedNavigationElements(attributes.sttb1__tabbedlink).map(
+												(bodyName) => {
+													return { label: __(bodyName,'tabbedcontent'), value: bodyName }
+												}
+											)
+										}
+										// When the option is changed set the datasrc.
+										onChange={ content => setAttributes({ sttb1__tabbedlinksubelement: content }) }
+									/>
+								:
+									<span>No Sub-Elements Navigation for Control!</span>
 								}
 
 							</PanelBody>

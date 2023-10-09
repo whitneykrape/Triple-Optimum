@@ -22,9 +22,21 @@ export default function EditNavigation( { attributes, setAttributes, isSelected,
 							className="sttb1__form"
 						>
 							<PlainText
+								label="Navigation Name"
 								onChange={ content => setAttributes({ sttb1__tabbednavid: content }) }
 								value={ attributes.sttb1__tabbednavid }
 								placeholder={__('Name these Controls for Tabs to Link to','tabbednavigator')}
+							/>
+
+							<SelectControl
+								label="Navigation Display"
+								value={ attributes.markerdisplay }
+								options={ [
+									{ label: 'Native Elements', value: '100%' },
+									{ label: 'Dots', 			value: '50%' },
+								] }
+								onChange={ content => setAttributes({ markerdisplay: content }) }
+								__nextHasNoMarginBottom
 							/>
 
 						</PanelBody>

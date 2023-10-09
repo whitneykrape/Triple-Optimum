@@ -12,12 +12,12 @@
 		"html": false
 	},
 	"attributes": {
-		"openModalBody": {
+		"sttb1__modalid": {
 			"type": "string",
 			"default": "Select an Option"
 		}
 	},
-	"textdomain": "gutenpride",
+	"textdomain": "modalopener",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./css/block-modal-back-end.css",
 	"style": "file:./css/block-modal-front-end.css",

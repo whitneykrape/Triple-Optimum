@@ -13,45 +13,43 @@ import '../css/block-modal-back-end.scss';
 
 export default function EditContent( { attributes, setAttributes, isSelected, clientId } ) {
 
-	function checkInnerblockSelected () {
-
-		const select = wp.data.select('core/block-editor');
-		const isParentOfSelectedBlock = select.hasSelectedInnerBlock( clientId, true );
-		return (isParentOfSelectedBlock ? true : false);			
-	}
-
-	// Removing the whole isSelected thing. Don't hide things from users.
-	const dispTitleInnerBlock = (blockSelected) => {
-		if (blockSelected || checkInnerblockSelected()) {
-			return (
-				<div>			
-					<label>{__('Modal Content:','bod-modal')}</label>
-					<div className="bod-form-innerblock ">
-						<InnerBlocks
-							allowedBlocks={allowedBlocks}
-						/>
-					</div>
-				</div>
-			);
-		} else {
-			return null;
-		}
-	}
-
-	const allowedBlocks = ["stitchedblocks/block-modal-content"];
+	// function checkInnerblockSelected () {
+	// 	const select = wp.data.select('core/block-editor')
+	// 	const isParentOfSelectedBlock = select.hasSelectedInnerBlock( clientId, true )
+	// 	return (isParentOfSelectedBlock ? true : false)
+	// }
+	// 
+	// const dispTitleInnerBlock = (blockSelected) => {
+	// 	if (blockSelected || checkInnerblockSelected()) {
+	// 		return (
+	// 			<div>			
+	// 				<label>{__('Modal Content:','modalcontent')}</label>
+	// 				<div className="">
+	// 					<InnerBlocks
+	// 						allowedBlocks={allowedBlocks}
+	// 					/>
+	// 				</div>
+	// 			</div>
+	// 		)
+	// 	} else {
+	// 		return null
+	// 	}
+	// }
+	//
+	// const allowedBlocks = ["stitchedblocks/block-modal-content"]
 	
     return (
         <div { ...useBlockProps() }>
             <Placeholder
-                label={ __( 'Modal Body', 'gutenpride' ) }
-                instructions={ __( 'First element opens a modal of the second element.', 'gutenpride' ) }
-				className={ __( 'modalbody', 'gutenpride' ) }
+                label={ __( 'Modal Body', 'modalcontent' ) }
+                instructions={ __( 'Add modal contents here.', 'modalcontent' ) }
+				className={ __( 'modalbody', 'modalcontent' ) }
             >
 
 				<InnerBlocks/>
 
             </Placeholder>
         </div>
-    );
+    )
 }
 

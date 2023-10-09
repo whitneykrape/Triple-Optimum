@@ -22,12 +22,12 @@
 			"type": "number", 
 			"default": 3 
 		},
-		"tabIdentifier": {
+		"tabidentifier": {
 			"type": "string",
 			"default": "Select an Option"
 		}
 	},
-	"textdomain": "gutenpride",
+	"textdomain": "modalcontent",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./css/block-modal-back-end.css",
 	"style": "file:./css/block-modal-front-end.css",

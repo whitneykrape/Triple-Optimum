@@ -14,6 +14,10 @@
 	"attributes": {
         "sttb1__tabbednavid": {
             "type": "string"
+        },
+        "sttb1__markerdisplay": {
+            "type": "string",
+			"default": "Select an Option"
         }
 	},
 	"textdomain": "tabbednavigator",

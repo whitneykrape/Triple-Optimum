@@ -14,7 +14,7 @@ export default function SaveContent( { attributes } ) {
     return (
 	// <div { ...blockProps }>
 		// { attributes.message }
-		<div className="sttb1__tabbedContent" data-sttb1__tabbedlink={ attributes.sttb1__tabbedlink } role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" >
+		<div className="sttb1__tabbedContent" data-sttb1__tabbedlink={ attributes.sttb1__tabbedlink } data-sttb1__tabbedlinksubelement={ attributes.sttb1__tabbedlinksubelement } role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" >
 			{<InnerBlocks.Content/>}
 		</div>
 	//</div>

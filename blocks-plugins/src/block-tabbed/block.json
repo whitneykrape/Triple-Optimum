@@ -25,7 +25,11 @@
 		"sttb1__tabbedlink": {
 			"type": "string",
 			"default": "Select an Option"
-		}
+		},
+        "sttb1__tabbedlinksubelement": {
+            "type": "string",
+			"default": "Select an Option"
+        }
 	},
 	"textdomain": "tabbedcontent",
 	"editorScript": "file:./index.js",

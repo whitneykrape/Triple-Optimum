@@ -12,25 +12,36 @@ import { SelectControl, PanelBody, Placeholder, TextControl } from '@wordpress/c
 import '../css/block-modal-back-end.scss';
 
 export default function EditOpener( { attributes, setAttributes, isSelected, clientId } ) {
-	const listModalBodies = () => {
-		let $arrayOfModelBodies = document.querySelectorAll('.modalbody');
-		$arrayOfModelBodies = Array.from($arrayOfModelBodies);
-		$arrayOfModelBodies = $arrayOfModelBodies.map(
-			(elementObject, index) => {
-				console.log('elementObject')
-				console.log(elementObject)
+	let modalControlBlocks = {} 
 
-				return index.toString()
+	
+	// List out the potential Content elements.
+	const listModalBodies = () => {
+		// Variables, defines scope and allows testing.
+		let arrayOfModelBodies
+
+		// Get all the Content elements to start from. 
+		// Roadmap, don't use classes for getting.
+		arrayOfModelBodies = document.querySelectorAll('.modalbody')
+
+		// Arrange an array and iterate.
+		arrayOfModelBodies = Array.from(arrayOfModelBodies)
+		arrayOfModelBodies = arrayOfModelBodies.map(
+			(element, elementIndex) => {
+				// Get each element's index, split it, and send it out. 
+				return elementIndex.toString()
 			}
 		)
-		$arrayOfModelBodies.unshift('Select an Option');
+		// Add a Default Option (so nothing auto sets.)
+		arrayOfModelBodies.unshift('Select an Option');
 
-		console.log('$arrayOfModelBodies')
-		console.log($arrayOfModelBodies)
+		console.log('arrayOfModelBodies')
+		console.log(arrayOfModelBodies)
 
-		// $arrayOfModelBodies = ["modalbody01"];
-
-		return $arrayOfModelBodies
+		// arrayOfModelBodies = ["modalbody01"];
+		
+		// Done, list of indices to use. 
+		return arrayOfModelBodies
 	}
 
 	// console.log(listModalBodies())
@@ -38,34 +49,33 @@ export default function EditOpener( { attributes, setAttributes, isSelected, cli
 	return (
 		<div {...useBlockProps()}>
 			<Placeholder
-				label={ __( 'Modal Opener', 'gutenpride' ) }
-				instructions={ __( 'First element triggers modal body.', 'gutenpride' ) }
-				className={ __( 'modalopener', 'gutenpride' ) }
+				label={ __( 'Modal Opener', 'modalopener' ) }
+				instructions={ __( 'First element triggers modal body.', 'modalopener' ) }
+				className={ __( 'modalopener', 'modalopener' ) }
 			>
-				<div data-openModalBody={ attributes.openModalBody }>
+				<div data-sttb1__modalid={ attributes.sttb1__modalid }>
 					<InnerBlocks/>
 				</div>
 
 				<InspectorControls>
 						<PanelBody
-							title={__('Properties','bod-modal')}
+							title={__('Properties','modalopener')}
 							initialOpen={false}
 							className="bod-form"
 						>
 							{ listModalBodies().length > 1 ?
 								<SelectControl
-									label={__('Open Modal','bod-modal')}
-									value={ attributes.openModalBody }
-									// Map of Modal Bodies
+									label={__('Open Modal','modalopener')}
+									value={ attributes.sttb1__modalid }
 									options= {
 										listModalBodies().map(
 											(bodyName) => {
-												return { label: __(bodyName,'bod-modal'), value: bodyName }
+												return { label: __(bodyName,'modalopener'), value: bodyName }
 											}
 										)
 									}
 									
-									onChange={ content => setAttributes({ openModalBody: content }) }
+									onChange={ content => setAttributes({ sttb1__modalid: content }) }
 									/>
 							:
 								<span>No Model Bodies to Link to!</span>

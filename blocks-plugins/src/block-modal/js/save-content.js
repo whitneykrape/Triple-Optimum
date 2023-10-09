@@ -9,6 +9,9 @@
  */
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
+import '../css/block-modal-back-end.scss';
+import '../css/block-modal-front-end.scss';
+
 export default function SaveContent( { attributes } ) {
     const blockProps = useBlockProps.save();
     return <div { ...blockProps }>
@@ -17,7 +20,7 @@ export default function SaveContent( { attributes } ) {
 		<div className="block-popup-overlay"></div>
 			
 		<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="block-popup-wrap">
-			<div className='modalBody'>
+			<div className='modalBody not'>
 				{<InnerBlocks.Content/>}
 			</div>
 		</div>

@@ -8,6 +8,10 @@
     font-size: 64px;
 }
 
-.modalBody {
-    display: block;
+body {
+    background-color: pink !important;
 }
+
+.modalBody {
+    display: none;
+} 

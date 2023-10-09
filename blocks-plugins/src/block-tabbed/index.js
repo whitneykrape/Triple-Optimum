@@ -13,6 +13,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './css/block-tabbed-front-end.scss';
+import './css/block-tabbed-back-end.scss';
 
 /**
  * Internal dependencies
