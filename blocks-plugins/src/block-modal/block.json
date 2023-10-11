@@ -29,7 +29,5 @@
 	},
 	"textdomain": "modalcontent",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./css/block-modal-back-end.css",
-	"style": "file:./css/block-modal-front-end.css",
 	"viewScript": "file:./view.js"
 }

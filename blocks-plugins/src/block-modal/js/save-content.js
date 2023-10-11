@@ -7,10 +7,8 @@
  *
  * @return {WPElement} Element to render.
  */
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
-import '../css/block-modal-back-end.scss';
-import '../css/block-modal-front-end.scss';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function SaveContent( { attributes } ) {
     const blockProps = useBlockProps.save();

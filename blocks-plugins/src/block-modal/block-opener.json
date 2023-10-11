@@ -19,7 +19,7 @@
 	},
 	"textdomain": "modalopener",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./css/block-modal-back-end.css",
-	"style": "file:./css/block-modal-front-end.css",
+	"editorStyle": "file:./css/index.scss",
+	"style": "file:./css/style-index.scss",
 	"viewScript": "file:./view.js"
 }

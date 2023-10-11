@@ -12,7 +12,6 @@ import { registerBlockType } from '@wordpress/blocks';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './css/block-modal-front-end.scss';
 
 /**
  * Internal dependencies
@@ -24,6 +23,8 @@ import SaveOpener from './js/save-opener';
 import metadataContent from './block.json';
 import metadataOpener from './block-opener.json';
 
+import './css/style-modal.scss';
+import './css/editor-modal.scss';
 
 import { __ } from '@wordpress/i18n';
 
