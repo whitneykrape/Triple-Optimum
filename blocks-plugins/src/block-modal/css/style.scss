@@ -1,0 +1,52 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.sttb01mb {
+
+	// &.sttb01mb--show {
+	// 	display: block;
+	// }
+
+	.sttb01mb__modalbody {
+		background: #fefefe;
+		border: #333333 solid 0px;
+		border-radius: 5px;
+		margin-left: -200px;
+		text-align:center;
+		position: fixed;
+		left: 50%;
+		top: -100%;
+		z-index: 11;
+		width: 360px;
+		box-shadow:0 5px 10px rgba(0,0,0,0.3);
+		-webkit-transform: translate(0, -500%);
+		-ms-transform: translate(0, -500%);
+		transform: translate(0, -500%);
+		-webkit-transition: -webkit-transform 0.3s ease-out;
+		-moz-transition: -moz-transform 0.3s ease-out;
+		-o-transition: -o-transform 0.3s ease-out;
+		transition: transform 0.3s ease-out;
+
+		display: none;
+
+		&.sttb01mb--show {
+			display: block;
+		}
+	}
+
+	.sttb01mb__overlay {
+		content: "";
+		display: none;
+		background: rgba(0, 0, 0, 0.6);
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 10;
+	}
+}

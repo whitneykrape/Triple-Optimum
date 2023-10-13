@@ -23,8 +23,8 @@ import SaveOpener from './js/save-opener';
 import metadataContent from './block.json';
 import metadataOpener from './block-opener.json';
 
-import './css/style-modal.scss';
-import './css/editor-modal.scss';
+import './css/style.scss';
+import './css/editor.scss';
 
 import { __ } from '@wordpress/i18n';
 

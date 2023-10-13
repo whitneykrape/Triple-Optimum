@@ -16,7 +16,7 @@ export default function SaveOpener( { attributes } ) {
 
 	return (
 		<div {...useBlockProps.save()}>
-			<div className='modalOpener' data-openModalBody={ attributes.openModalBody }>
+			<div className='modalOpener' data-sttb1__modalid={ attributes.sttb1__modalid }>
 				<InnerBlocks.Content />
 			</div>
 		</div>

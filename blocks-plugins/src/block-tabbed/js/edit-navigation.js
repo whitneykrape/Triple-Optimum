@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { InspectorControls, useBlockProps, InnerBlocks, PlainText } from '@wordpress/block-editor';
 import { SelectControl, PanelBody, Placeholder, TextControl } from '@wordpress/components';
-import '../css/block-tabbed-back-end.scss';
 
 export default function EditNavigation( { attributes, setAttributes, isSelected, clientId } ) {
 	return (

@@ -12,8 +12,6 @@ import { registerBlockType } from '@wordpress/blocks';
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './css/block-tabbed-front-end.scss';
-import './css/block-tabbed-back-end.scss';
 
 /**
  * Internal dependencies
@@ -24,6 +22,9 @@ import EditNavigation from './js/edit-navigation';
 import SaveNavigation from './js/save-navigation';
 import metadataContent from './block.json';
 import metadataNavigation from './block-navigation.json';
+
+import './css/style.scss';
+import './css/editor.scss';
 
 import { __ } from '@wordpress/i18n';
 
