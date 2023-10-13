@@ -23,7 +23,7 @@
 /* eslint-disable no-console */
 /* eslint-enable no-console */
 
-console.log('Modal Loaded 0.002')
+console.log('Modal Loaded 0.012')
 
 window.addEventListener('load', listener = () => {
     // Roadmap, swap out classes for data. Makes 

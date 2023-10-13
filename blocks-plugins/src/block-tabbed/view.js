@@ -25,7 +25,7 @@
 /* eslint-disable no-console */
 /* eslint-enable no-console */
 
-console.log('Tabbed Loaded 0.024')
+console.log('Tabbed Loaded 0.026')
 
 // Global status of all Tabs accessible later .
 let allTabbedNavigators = {}
