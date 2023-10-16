@@ -25,31 +25,49 @@
 
 console.log('Modal Loaded 0.012')
 
+
+
 window.addEventListener('load', listener = () => {
     // Roadmap, swap out classes for data. Makes 
-    let arrayOfModelOpeners = document.querySelectorAll('.modalOpener');
-    let arrayOfModelBodies  = document.querySelectorAll('.modalBody');
+    let arrayOfModalOpeners   = document.querySelectorAll('.modalOpener');
+    let arrayOfModalBodies    = document.querySelectorAll('.sttb01mb__modalwrap');
+    let arrayOfModalOverlays  = document.querySelectorAll('.sttb01mb__overlay');
 
-    console.log('arrayOfModelBodies')
-    console.log(arrayOfModelBodies)
+
+
+    clickToggleModal = (element, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays) => {
+        element.addEventListener("click", (event) => {    
+            arrayOfModalBodies[referenceToModalBody].classList.toggle("sttb01mb--show")
+            arrayOfModalOverlays[referenceToModalBody].classList.toggle("sttb01mb--show")
+        })
+    }
+
+
+
+    console.log('arrayOfModalBodies')
+    console.log(arrayOfModalBodies)
 
     // Iterate through the Controllers as assocate them.
-    arrayOfModelOpeners.forEach((slide, index) => {
+    arrayOfModalOpeners.forEach((slide, index) => {
         console.log(slide)
         console.log(index)
 
         // Get the dataset from the frontend. 
         referenceToModalBody = slide.dataset.sttb1__modalid;
 
-        console.log('referenceToModalBody')
+        console.log("referenceToModalBody")
         console.log(referenceToModalBody)
 
-        // Set up the clicks.
-        // Roadmap, pull this out. 
-        slide.addEventListener("click", clickShowModalBodyEvent = (e) => {
-            console.log(e)
+        if (referenceToModalBody != 'Select an Option') {
+            overlay = arrayOfModalOverlays[referenceToModalBody]
 
-            arrayOfModelBodies[referenceToModalBody].classList.toggle("show")
-        })
+            console.log('referenceToModalBody')
+            console.log(referenceToModalBody)
+
+            // Set up the clicks.
+            // Roadmap, pull this out. 
+            clickToggleModal(slide, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
+            clickToggleModal(overlay, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
+        }
     })
 })
