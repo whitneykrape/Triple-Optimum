@@ -12,9 +12,11 @@ import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 export default function SaveNavigation( { attributes } ) {
 	return (
 		// <div {...useBlockProps.save()}>
-			<div className='sttb1__tabbedNavigator' data-sttb1__tabbednavid={ attributes.sttb1__tabbednavid }>
+		<div className="sttb01tb">
+			<div className='sttb01tb__tabbednavigator' data-sttb1__tabbednavid={ attributes.sttb1__tabbednavid }>
 				<InnerBlocks.Content />
 			</div>
+		</div>
 		// </div>
 	);
 }

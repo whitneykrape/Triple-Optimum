@@ -33,7 +33,5 @@
 	},
 	"textdomain": "tabbedcontent",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./css/block-tabbed-back-end.css",
-	"style": "file:./css/block-tabbed-front-end.css",
 	"viewScript": "file:./view.js"
 }

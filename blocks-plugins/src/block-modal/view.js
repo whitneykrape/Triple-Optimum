@@ -29,7 +29,7 @@ console.log('Modal Loaded 0.012')
 
 window.addEventListener('load', listener = () => {
     // Roadmap, swap out classes for data. Makes 
-    let arrayOfModalOpeners   = document.querySelectorAll('.modalOpener');
+    let arrayOfModalOpeners   = document.querySelectorAll('.sttb01mb__modalopener');
     let arrayOfModalBodies    = document.querySelectorAll('.sttb01mb__modalwrap');
     let arrayOfModalOverlays  = document.querySelectorAll('.sttb01mb__overlay');
 

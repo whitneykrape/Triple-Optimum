@@ -11,12 +11,10 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function SaveOpener( { attributes } ) {
-	console.log('save attributes')
-	console.log(attributes)
 
 	return (
-		<div {...useBlockProps.save()}>
-			<div className='modalOpener' data-sttb1__modalid={ attributes.sttb1__modalid }>
+		<div {...useBlockProps.save()} className="sttb01mb">
+			<div className='sttb01mb__modalopener' data-sttb1__modalid={ attributes.sttb1__modalid }>
 				<InnerBlocks.Content />
 			</div>
 		</div>

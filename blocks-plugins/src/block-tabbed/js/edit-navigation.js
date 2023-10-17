@@ -8,9 +8,9 @@ export default function EditNavigation( { attributes, setAttributes, isSelected,
 			<Placeholder
 				label={ __( 'Tabbed Navigator', 'tabbednavigator' ) }
 				instructions={ __( 'First element triggers modal body.', 'tabbednavigator' ) }
-				className={ __( 'tabbednavigation', 'sttb1__tabbednavid', attributes.sttb1__tabbednavid ) }
+				className={ __( 'tabbednavigation', 'sttb01tb__tabbednavid', attributes.sttb1__tabbednavid ) }
 			>
-				<div className='sttb1__tabbedNavigator' data-sttb1__tabbednavid={ attributes.sttb1__tabbednavid }>
+				<div className='sttb01tb__tabbednavigator' data-sttb1__tabbednavid={ attributes.sttb1__tabbednavid }>
 					<InnerBlocks/>
 				</div>
 
@@ -18,7 +18,7 @@ export default function EditNavigation( { attributes, setAttributes, isSelected,
 						<PanelBody
 							title={__('Properties','tabbednavigator')}
 							initialOpen={false}
-							className="sttb1__form"
+							className="sttb01tb__panelbody"
 						>
 							<PlainText
 								label="Navigation Name"

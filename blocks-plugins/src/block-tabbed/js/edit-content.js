@@ -21,7 +21,7 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
 		let arrayOfElements, arrayOfSubElements, sttb1__tabbednavid
 
 		// Get all the parental elements to start from. 
-		arrayOfElements = document.querySelectorAll('.sttb1__tabbedNavigator')
+		arrayOfElements = document.querySelectorAll('.sttb01tb__tabbednavigator')
 
 		// Arrange an array and iterate.
 		arrayOfElements = Array.from(arrayOfElements)
@@ -54,7 +54,7 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
 		let arrayOfTabbedNavigation, sttb1__tabbednavid
 		
 		// Get all the options from potential Navigation Blocks.
-		arrayOfTabbedNavigation = document.querySelectorAll('.sttb1__tabbedNavigator')
+		arrayOfTabbedNavigation = document.querySelectorAll('.sttb01tb__tabbednavigator')
 
 		// Arrange an array and iterate.
 		arrayOfTabbedNavigation = Array.from(arrayOfTabbedNavigation)

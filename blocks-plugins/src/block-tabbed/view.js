@@ -141,7 +141,7 @@ layoutLeftRightButtons = (tab) => {
 
 window.addEventListener('load', listener = () => {
     // First, look through all the Navigation blocks. Without those, no need to do anything.
-    const tabbedNavigatorElements = document.querySelectorAll(".sttb1__tabbedNavigator")
+    const tabbedNavigatorElements = document.querySelectorAll(".sttb01tb__tabbednavigator")
 
     // Getting into each tabbed "scene" get the overall ID to use throughout. 
     tabbedNavigatorElements.forEach((element, elementIndex) => {

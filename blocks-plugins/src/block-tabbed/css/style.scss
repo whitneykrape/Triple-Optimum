@@ -8,10 +8,24 @@
  *
  */
 
-.wp-block-create-block-gutenpride {
-	font-size: 64px;
-}
+.sttb01tb {
+	background-color: pink;
 
-.sttb1__tabbedContent {
-	overflow: hidden;
+	.sttb01tb__tabbedcontent {
+		overflow: hidden;
+	}
+
+	.sttb01tb__tabbednavigator,
+	.sttb01tb__tabbedNavigator {
+		ul {
+			display: flex;
+			list-style: none;
+			justify-content: space-between;
+			padding: 0;
+		} 
+
+		.tabbedNavigationMarker {
+			cursor: pointer;
+		}
+	}
 }

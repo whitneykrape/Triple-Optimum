@@ -34,17 +34,11 @@ export default function EditOpener( { attributes, setAttributes, isSelected, cli
 		)
 		// Add a Default Option (so nothing auto sets.)
 		arrayOfModelBodies.unshift('Select an Option');
-
-		console.log('arrayOfModelBodies')
-		console.log(arrayOfModelBodies)
-
-		// arrayOfModelBodies = ["modalbody01"];
 		
 		// Done, list of indices to use. 
 		return arrayOfModelBodies
 	}
 
-	// console.log(listModalBodies())
 
 	return (
 		<div {...useBlockProps()}>
@@ -61,7 +55,7 @@ export default function EditOpener( { attributes, setAttributes, isSelected, cli
 						<PanelBody
 							title={__('Properties','modalopener')}
 							initialOpen={false}
-							className="bod-form"
+							className="sttb1__panelbody"
 						>
 							{ listModalBodies().length > 1 ?
 								<SelectControl

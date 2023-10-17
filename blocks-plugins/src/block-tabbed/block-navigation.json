@@ -22,7 +22,7 @@
 	},
 	"textdomain": "tabbednavigator",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./css/block-tabbed-back-end.css",
-	"style": "file:./css/block-tabbed-front-end.css",
+	"editorStyle": "file:./css/index.scss",
+	"style": "file:./css/style-index.scss",
 	"viewScript": "file:./view.js"
 }
