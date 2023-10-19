@@ -46,13 +46,13 @@ horizontalTabMovement = (tabbedNavId) => {
     tabbedArray.forEach((content, contentIndex) => {
         // Calculate the new index and and how far to move for each content piece.
         newIndex          = contentIndex - clickValue
-        newIndexTranslate = 100 * (newIndex)
+        newIndexTranslate = 100 * (clickValue)
         newIndex          = (newIndex).toString()
 
         // Reset and then set className and style.
         content.className = content.className.replace(/transform([\-0-9]*)/, '')
         content.classList.add("transform" + newIndex)
-        content.style.transform = `translateX(${newIndexTranslate}%)`
+        content.style.transform = `translateX(-${newIndexTranslate}%)`
     })
 }
 
