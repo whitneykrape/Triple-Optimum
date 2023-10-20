@@ -26,12 +26,14 @@
 
 		.tabbedNavigationMarker {
 			cursor: pointer;
+			width: 100%;
 		}
 	}
 }
 
 .sttb01tb__containinghelper {
 	display: flex;
+	overflow: hidden;
 
 	.sttb01tb__tabbedcontent {
 		margin: 0px;

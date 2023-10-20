@@ -126,6 +126,13 @@ layoutNavigationMarkers = (tab) => {
         // Update the display based on settings.
         // tabSubMarkersList[id].innerHTML
 
+        console.log('tabSubMarkersList[id]')
+        console.log(tabSubMarkersList[id])
+
+        if (tabSubMarkersList[id].tagName == 'LI') {
+            tabSubMarkersList[id].innerHTML = '&middot;'
+        }
+
         // Add individual ids, overall content id, and the starter class to link to content.
         tabSubMarkersList[id].dataset.markerindex = id
         tabSubMarkersList[id].dataset.sttb1__tabbednavid = tabbedNavId
