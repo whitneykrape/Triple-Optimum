@@ -34,13 +34,16 @@ let allTabbedNavigators = {}
 
 horizontalTabMovement = (tabbedNavId) => {
     // Variables, defines scope and allows testing.
-    let tabbedArray, clickValue, newIndex, newIndexTranslate
+    let tabbedArray, tabbedArrayCount, clickValue, newIndex, newIndexTranslate
 
     // From the "parent" tabbedNavId get all the content with that Id.
     tabbedArray = document.querySelectorAll('[data-sttb1__tabbedlink="' + tabbedNavId + '"]')
 
     // Get the (recently updated) index.
     clickValue = allTabbedNavigators[tabbedNavId]['currentIndex']
+
+    // The total number of items
+    tabbedArrayCount = tabbedArray.length
 
     // Set the new properties for each content tab.
     tabbedArray.forEach((content, contentIndex) => {
@@ -50,6 +53,7 @@ horizontalTabMovement = (tabbedNavId) => {
         newIndex          = (newIndex).toString()
 
         // Reset and then set className and style.
+        content.style.width = (100 / tabbedArrayCount) + '%'
         content.className = content.className.replace(/transform([\-0-9]*)/, '')
         content.classList.add("transform" + newIndex)
         content.style.transform = `translateX(-${newIndexTranslate}%)`
@@ -95,7 +99,7 @@ tabbedNavigationClick = (tabbedNavId) => {
         
 layoutNavigationMarkers = (tab) => {
     // Variables, defines scope and allows testing.
-    let tabbedNavId, tabMarkersList
+    let tabbedNavId, tabMarkersList, tabMarkersListCount
 
     // Since we are starting from the tab content, need to get the tabbedNavId instead of it passing in.
     tabbedNavId = tab.dataset.sttb1__tabbednavid 
@@ -105,6 +109,12 @@ layoutNavigationMarkers = (tab) => {
 
     // Get all the navigation items with this tabs id (self selecting.)
     tabSubMarkersList = document.querySelector('[data-sttb1__tabbednavid="' + tabbedNavId + '"]').querySelectorAll('img,li')
+
+    // What is the total count for styling
+    tabMarkersListCount = tabMarkersList.length
+
+    // Style up the helping container (this needs more work)
+    tabMarkersList[0].parentNode.style.width = (tabMarkersListCount * 100) + '%'
 
     // Loop through the content and update the navigation accordingly.
     tabMarkersList.forEach((element, elementIndex) => {
