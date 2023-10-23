@@ -25,7 +25,7 @@
 /* eslint-disable no-console */
 /* eslint-enable no-console */
 
-console.log('Tabbed Loaded 0.026')
+console.log('Tabbed Loaded 0.032')
 
 // Global status of all Tabs accessible later .
 let allTabbedNavigators = {}
@@ -130,7 +130,7 @@ layoutNavigationMarkers = (tab) => {
         console.log(tabSubMarkersList[id])
 
         if (tabSubMarkersList[id].tagName == 'LI') {
-            tabSubMarkersList[id].innerHTML = '&middot;'
+            tabSubMarkersList[id].innerHTML = '&bull;'
         }
 
         // Add individual ids, overall content id, and the starter class to link to content.

@@ -23,7 +23,7 @@
 /* eslint-disable no-console */
 /* eslint-enable no-console */
 
-console.log('Modal Loaded 0.012')
+console.log('Modal Loaded 0.025')
 
 
 
@@ -42,15 +42,13 @@ window.addEventListener('load', listener = () => {
         })
     }
 
-
-
     console.log('arrayOfModalBodies')
     console.log(arrayOfModalBodies)
 
     // Iterate through the Controllers as assocate them.
-    arrayOfModalOpeners.forEach((slide, index) => {
+    arrayOfModalOpeners.forEach((slide, slideIndex) => {
         console.log(slide)
-        console.log(index)
+        console.log(slideIndex)
 
         // Get the dataset from the frontend. 
         referenceToModalBody = slide.dataset.sttb1__modalid;
