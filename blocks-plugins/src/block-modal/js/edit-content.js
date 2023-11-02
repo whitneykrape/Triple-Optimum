@@ -45,7 +45,6 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
                 instructions={ __( 'Add modal contents here.', 'modalcontent' ) }
 				className={ __( 'modalbody', 'modalcontent' ) }
             >
-
 				<InnerBlocks/>
 
             </Placeholder>

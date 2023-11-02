@@ -41,6 +41,14 @@
 			transform: translate(0);
 			display: block;
 		}
+
+		&::after {
+			content: '\00d7';
+			width: 40px;
+			height: 40px;
+			display: block;
+			font-size: 2em;
+		}
 	}
 
 	.sttb01mb__overlay {
