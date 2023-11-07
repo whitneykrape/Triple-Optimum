@@ -14,6 +14,14 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
 	let tabbedNavigationBlocks = {} 
 
 
+	
+    const tabbedContentElements = document.querySelectorAll(".sttb01tb__tabbedcontent")
+
+    tabbedContentElements.forEach((element, elementIndex) => {
+        element.parentElement.classList.add('sttb01tb__containinghelper')
+    })
+
+
 
 	// List out the potential elements, children of parents, that can be clickable.
 	const listTabbedSubElements = () => {
@@ -41,6 +49,9 @@ export default function EditContent( { attributes, setAttributes, isSelected, cl
 						return subElement.tagName.toLowerCase() + '#' + subElementIndex
 					}
 				)
+
+				// Add a Default Option (so nothing auto sets.)
+				arrayOfSubElements.unshift('Select an Option')
 
 				// If there is a parent element to work with add they to the Global object to use later.
 				if (tabbedNavigationBlocks.hasOwnProperty(sttb1__tabbednavid))

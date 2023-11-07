@@ -20,7 +20,7 @@ export default function EditNavigation( { attributes, setAttributes, isSelected,
 							initialOpen={false}
 							className="sttb01tb__panelbody"
 						>
-							<PlainText
+							<TextControl
 								label="Navigation Name"
 								onChange={ content => setAttributes({ sttb1__tabbednavid: content }) }
 								value={ attributes.sttb1__tabbednavid }

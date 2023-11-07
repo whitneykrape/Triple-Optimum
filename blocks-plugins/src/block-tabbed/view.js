@@ -76,9 +76,6 @@ tabbedNavigationClick = (tabbedNavId) => {
 
         // Set out the new events
         clickElement.addEventListener("click", (event) => {
-            console.log('eventTabbedStart')
-            console.log(event)
-
             // Get what was clicked on and set the global object.
             // ROADMAP move the click data to a data prop (need to set those first.)
             clickValue = clickElement.dataset.markerindex
@@ -120,23 +117,26 @@ layoutNavigationMarkers = (tab) => {
     tabMarkersList.forEach((element, elementIndex) => {
         // Get the id set on the back-end.
         id = element.dataset.sttb1__tabbedlinksubelement
-        id = id.split('#')
-        id = id[1]
 
-        // Update the display based on settings.
-        // tabSubMarkersList[id].innerHTML
+        if (id) {
+            id = id.split('#')
+            id = id[1]
 
-        console.log('tabSubMarkersList[id]')
-        console.log(tabSubMarkersList[id])
+            // Update the display based on settings.
+            // tabSubMarkersList[id].innerHTML
 
-        if (tabSubMarkersList[id].tagName == 'LI') {
-            tabSubMarkersList[id].innerHTML = '&bull;'
+            console.log('tabSubMarkersList[id]')
+            console.log(tabSubMarkersList[id])
+
+            if (tabSubMarkersList[id].tagName == 'LI') {
+                tabSubMarkersList[id].innerHTML = '&bull;'
+            }
+
+            // Add individual ids, overall content id, and the starter class to link to content.
+            tabSubMarkersList[id].dataset.markerindex = id
+            tabSubMarkersList[id].dataset.sttb1__tabbednavid = tabbedNavId
+            tabSubMarkersList[id].classList.add('tabbedNavigationMarker')
         }
-
-        // Add individual ids, overall content id, and the starter class to link to content.
-        tabSubMarkersList[id].dataset.markerindex = id
-        tabSubMarkersList[id].dataset.sttb1__tabbednavid = tabbedNavId
-        tabSubMarkersList[id].classList.add('tabbedNavigationMarker')
     })
 }
 
@@ -190,5 +190,11 @@ window.addEventListener('load', listener = () => {
 
         // Set up all the click events for the navigation.
         tabbedNavigationClick(tabbedNavId)
+    })
+
+    const tabbedContentElements = document.querySelectorAll(".sttb01tb__tabbedcontent")
+
+    tabbedContentElements.forEach((element, elementIndex) => {
+        element.parentElement.classList.add('sttb01tb__containinghelper')
     })
 })
