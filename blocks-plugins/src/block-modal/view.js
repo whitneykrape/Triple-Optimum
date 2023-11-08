@@ -29,9 +29,9 @@ console.log('Modal Loaded 0.025')
 
 window.addEventListener('load', listener = () => {
     // Roadmap, swap out classes for data. Makes 
-    let arrayOfModalOpeners   = document.querySelectorAll('.sttb01mb__modalopener');
-    let arrayOfModalBodies    = document.querySelectorAll('.sttb01mb__modalwrap');
-    let arrayOfModalOverlays  = document.querySelectorAll('.sttb01mb__overlay');
+    let arrayOfModalOpeners   = document.querySelectorAll('.sttb01mb__modalopener')
+    let arrayOfModalBodies    = document.querySelectorAll('.sttb01mb__modalwrap')
+    let arrayOfModalOverlays  = document.querySelectorAll('.sttb01mb__overlay')
 
 
 
@@ -51,7 +51,7 @@ window.addEventListener('load', listener = () => {
         console.log(slideIndex)
 
         // Get the dataset from the frontend. 
-        referenceToModalBody = slide.dataset.sttb1__modalid;
+        referenceToModalBody = slide.dataset.sttb1__modalid
 
         console.log("referenceToModalBody")
         console.log(referenceToModalBody)
@@ -59,13 +59,21 @@ window.addEventListener('load', listener = () => {
         if (referenceToModalBody != 'Select an Option') {
             overlay = arrayOfModalOverlays[referenceToModalBody]
 
-            console.log('referenceToModalBody')
-            console.log(referenceToModalBody)
+            // Get the X closer
+            elementModalCloser = arrayOfModalBodies[referenceToModalBody]
+            elementModalCloser = elementModalCloser.querySelector('.sttb01mb__closer')
+
+            console.log('overlay')
+            console.log(overlay)
+
+            console.log('elementModalCloser')
+            console.log(elementModalCloser)
 
             // Set up the clicks.
             // Roadmap, pull this out. 
             clickToggleModal(slide, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
             clickToggleModal(overlay, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
+            clickToggleModal(elementModalCloser, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
         }
     })
 })

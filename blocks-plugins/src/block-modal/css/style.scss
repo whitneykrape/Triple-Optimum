@@ -42,12 +42,15 @@
 			display: block;
 		}
 
-		&::after {
-			content: '\00d7';
+		.sttb01mb__closer {
 			width: 40px;
 			height: 40px;
 			display: block;
 			font-size: 2em;
+			position: absolute;
+			right: 0px;
+			top: -5px;
+			cursor: pointer;
 		}
 	}
 

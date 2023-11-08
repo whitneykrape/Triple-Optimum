@@ -19,6 +19,8 @@ export default function SaveContent( { attributes } ) {
 			<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="sttb01mb__modalwrap">
 				<div className='sttb01mb__modalbody'>
 					{<InnerBlocks.Content/>}
+
+					<div className="sttb01mb__closer">&times;</div>
 				</div>
 			</div>
 
