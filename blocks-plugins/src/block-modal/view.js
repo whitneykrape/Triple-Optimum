@@ -23,7 +23,7 @@
 /* eslint-disable no-console */
 /* eslint-enable no-console */
 
-console.log('Modal Loaded 0.025')
+console.log('Modal Loaded 0.035')
 
 
 
@@ -42,32 +42,19 @@ window.addEventListener('load', listener = () => {
         })
     }
 
-    console.log('arrayOfModalBodies')
-    console.log(arrayOfModalBodies)
-
     // Iterate through the Controllers as assocate them.
     arrayOfModalOpeners.forEach((slide, slideIndex) => {
-        console.log(slide)
-        console.log(slideIndex)
 
         // Get the dataset from the frontend. 
         referenceToModalBody = slide.dataset.sttb1__modalid
 
-        console.log("referenceToModalBody")
-        console.log(referenceToModalBody)
-
         if (referenceToModalBody != 'Select an Option') {
+            // Get the specific overlay
             overlay = arrayOfModalOverlays[referenceToModalBody]
 
             // Get the X closer
             elementModalCloser = arrayOfModalBodies[referenceToModalBody]
             elementModalCloser = elementModalCloser.querySelector('.sttb01mb__closer')
-
-            console.log('overlay')
-            console.log(overlay)
-
-            console.log('elementModalCloser')
-            console.log(elementModalCloser)
 
             // Set up the clicks.
             // Roadmap, pull this out. 
