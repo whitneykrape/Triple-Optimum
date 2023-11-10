@@ -52,6 +52,12 @@ horizontalTabMovement = (tabbedNavId) => {
         newIndexTranslate = 100 * (clickValue)
         newIndex          = (newIndex).toString()
 
+        if (newIndex == 0) {
+            content.classList.add('activeTab')
+        } else {
+            content.classList.remove('activeTab')
+        }
+
         // Reset and then set className and style.
         content.style.width = (100 / tabbedArrayCount) + '%'
         content.className = content.className.replace(/transform([\-0-9]*)/, '')
@@ -70,9 +76,13 @@ tabbedNavigationClick = (tabbedNavId) => {
     navigationMarkers = document.querySelectorAll('[data-sttb1__tabbednavid="' + tabbedNavId + '"] .tabbedNavigationMarker')
 
     // Iterate through what was just chosen above.
-    navigationMarkers.forEach((clickElement) => {
+    navigationMarkers.forEach((clickElement, clickElementIndex) => {
         // Clear out the events incase this is a reload or other restart.
         clickElement.removeEventListener("click", (event) => {})
+
+        if (clickElementIndex == 0) {
+            clickElement.classList.add('activeTabNav')
+        }
 
         // Set out the new events
         clickElement.addEventListener("click", (event) => {
@@ -83,6 +93,14 @@ tabbedNavigationClick = (tabbedNavId) => {
             // ISSUE!
             // If the event doesn't finish running properly, we've set an unconfirmed Global index.
             // Need a callback and error handling. 
+
+            // Remove all potential flags?
+            navigationMarkers.forEach((eachElement) => {
+                eachElement.classList.remove('activeTabNav')
+            })
+            
+            // Add an active flag?
+            clickElement.classList.add('activeTabNav')
 
             // Run the movement event.
             horizontalTabMovement(tabbedNavId)
