@@ -1,6 +1,7 @@
 {
   "packages": [
-    "block-article"
+    "block-modal",
+    "block-tabbed"
   ],
   "version": "independent"
 }
