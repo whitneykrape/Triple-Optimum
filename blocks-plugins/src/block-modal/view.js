@@ -28,10 +28,13 @@ console.log('Modal Loaded 0.035')
 
 
 window.addEventListener('load', listener = () => {
+    // Variables, defines scope and allows testing.
+    let arrayOfModalOpeners, arrayOfModalBodies, arrayOfModalOverlays, referenceToModalBody
+
     // Roadmap, swap out classes for data. Makes 
-    let arrayOfModalOpeners   = document.querySelectorAll('.sttb01mb__modalopener')
-    let arrayOfModalBodies    = document.querySelectorAll('.sttb01mb__modalwrap')
-    let arrayOfModalOverlays  = document.querySelectorAll('.sttb01mb__overlay')
+    arrayOfModalOpeners   = document.querySelectorAll('.sttb01mb__modalopener')
+    arrayOfModalBodies    = document.querySelectorAll('.sttb01mb__modalwrap')
+    arrayOfModalOverlays  = document.querySelectorAll('.sttb01mb__overlay')
 
 
 
@@ -44,10 +47,13 @@ window.addEventListener('load', listener = () => {
 
     // Iterate through the Controllers as assocate them.
     arrayOfModalOpeners.forEach((slide, slideIndex) => {
+        // Variables, defines scope and allows testing.
+        let overlay
 
         // Get the dataset from the frontend. 
         referenceToModalBody = slide.dataset.sttb1__modalid
 
+        // Only do something if the Option isn't a default
         if (referenceToModalBody != 'Select an Option') {
             // Get the specific overlay
             overlay = arrayOfModalOverlays[referenceToModalBody]
@@ -61,6 +67,8 @@ window.addEventListener('load', listener = () => {
             clickToggleModal(slide, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
             clickToggleModal(overlay, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
             clickToggleModal(elementModalCloser, referenceToModalBody, arrayOfModalBodies, arrayOfModalOverlays)
+        } else {
+            // Needs error condition 
         }
     })
 })
