@@ -1,0 +1,73 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ *
+ * Modal Style 0.012
+ *
+ */
+
+.sttb01mb {
+
+	// &.sttb01mb--show {
+	// 	display: block;
+	// } 
+
+	.sttb01mb__modalopener {
+		cursor: pointer;
+	}
+
+	.sttb01mb__modalwrap {
+		background: #fefefe;
+		border: #333333 solid 0px;
+		border-radius: 5px;
+		margin-left: -40%;
+		text-align:center;
+		position: fixed;
+		left: 50%;
+		top: -100%;
+		z-index: 11;
+		width: 80%;
+		box-shadow:0 5px 10px rgba(0,0,0,0.3);
+		transform: translate(0, -500%);
+		transition: transform 0.3s ease-out;
+
+		display: none;
+		overflow: hidden;
+
+		&.sttb01mb--show {
+			top: 10%;
+			transform: translate(0);
+			display: block;
+		}
+
+		.sttb01mb__closer {
+			width: 40px;
+			height: 40px;
+			display: block;
+			font-size: 2em;
+			position: absolute;
+			right: 0px;
+			top: -5px;
+			cursor: pointer;
+		}
+	}
+
+	.sttb01mb__overlay {
+		content: "";
+		display: none;
+		background: rgba(0, 0, 0, 0.6);
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 10;
+		cursor: pointer;
+
+		&.sttb01mb--show {
+			display: block;
+		}
+	}
+}
