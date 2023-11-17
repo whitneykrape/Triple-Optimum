@@ -11,19 +11,19 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 export default function SaveContent( { attributes } ) {
-    const blockProps = useBlockProps.save();
+    const blockProps = useBlockProps.save()
     return <div { ...blockProps }>
 		{ attributes.message }
 		
 		<div className="sttb01mb">
 			<div role="dialog" aria-modal="false" aria-labelledby="" aria-describedby="" className="sttb01mb__modalwrap">
-				<div className='sttb01mb__modalbody'>
+				<div className="sttb01mb__modalbody">
 					{<InnerBlocks.Content/>}
 				</div>
 			</div>
 
 			<div className="sttb01mb__overlay"></div>
 		</div>
-	</div>;
+	</div>
 }
 
